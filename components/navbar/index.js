@@ -1,14 +1,65 @@
+import * as Msal from "@azure/msal-browser";
 import Link from 'next/link';
+import { AuthenticatedTemplate, UnauthenticatedTemplate } from "@azure/msal-react";
+import { useIsAuthenticated, useMsal } from "@azure/msal-react";
+import React from 'react';
 
-const NavBar = () => {
+import { loginRequest } from "../../src/authConfig";
+import { SignInButton, SignOutButton } from '../../src/ui';
+
+const NavBar = () => {    
+  const { instance } = useMsal();
+  console.log('Instance', instance)
+  const [anchorEl, setAnchorEl] = React.useState(null);
+  const open = Boolean(anchorEl);
+
+  const handleLogin = (loginType) => {
+    console.log("Logging In.")
+    setAnchorEl(null);
+
+    instance.loginPopup(loginRequest);
+    if (loginType === "popup") {
+        instance.loginPopup(loginRequest);
+    } else if (loginType === "redirect") {
+        instance.loginRedirect(loginRequest);
+    }
+  }
+
+  const handleLogout = () => {
+    instance.logout();
+  }
+
   return (
     <div className="navbar">
-      <Link href="/"><div>Home</div></Link>
+      <div className="siteHeading">
+        <Link href="/">CS Revise</Link>
+      </div>
+      <div className="userOPtions">
+        <AuthenticatedTemplate>
+          <SignOutButton />
+        </AuthenticatedTemplate>
+        <UnauthenticatedTemplate>
+          <SignInButton />
+        </UnauthenticatedTemplate>
+      </div>
+      
+      
+      
       <style jsx>{`
 
         .navbar {
-          padding: 1.5rem;
+          display: flex;
           background-color: silver;
+          align-items: center;
+        }
+
+        .siteHeading {
+          flex:1;
+          margin-left: 2rem;
+        }
+
+        .userOptions {
+
         }
       
       `}</style>

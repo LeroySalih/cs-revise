@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { lazy } from 'react';
 
 import Task from '../../components/task';
+import Question from '../../components/question';
 
 const ModulePage = ({module}) => {
   return (

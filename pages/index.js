@@ -2,6 +2,7 @@ import Head from 'next/head'
 import styles from '../styles/Home.module.css'
 import Link from 'next/link';
 import {connectToDatabase} from '../utils/mongodb';
+import { AuthenticatedTemplate, UnauthenticatedTemplate } from "@azure/msal-react";
 
 export default function Home({data}) {
   return (
@@ -12,6 +13,15 @@ export default function Home({data}) {
       </Head>
 
       <main className={styles.main}>
+
+          <AuthenticatedTemplate>
+              <Link variant="contained" color="primary" href="/profile">Request Profile Information</Link>
+          </AuthenticatedTemplate>
+
+          <UnauthenticatedTemplate>
+              <center>Please sign-in to see your profile information.</center>
+          </UnauthenticatedTemplate>
+
         <h1 className={styles.title}>
           Welcome to CS Revise!
         </h1>
