@@ -22,7 +22,7 @@ const networks = {
       "introduction" : {
         title: "1. Introduction",
         order: 0,
-        _id: "1-introduction",
+        _id: "introduction",
         desc: "An overview of the key concepts.",
         specDesc: `<ul>
         <li>Define what a computer network is.</li>
@@ -53,7 +53,7 @@ const networks = {
       "transmission-media" : {
         title: "2. Transmission Media",
         order: 0,
-        _id: "2. Transmission Media",
+        _id: "transmission-media",
         desc: "An overview of the key concepts.",
         specDesc: "<div>This is the <b>Spec Desc</b>.</div>",
         tasks: {
@@ -81,7 +81,7 @@ const networks = {
       "topologies" : {
         title: "3. Topologies",
         order: 0,
-        _id: "3-topologies",
+        _id: "topologies",
         desc: "An overview of the key concepts.",
         specDesc: `
         Explain the following physical network topologies:
@@ -115,13 +115,30 @@ const networks = {
       "protocols" : {
         title: "4. Protocols and Four Layer Model",
         order: 0,
-        _id: "3-topologies",
+        _id: "protocols",
         desc: "An overview of the key concepts.",
         specDesc: `
-        Explain the following physical network topologies:
+        
         <ul>
-        <li>star</li>
-        <li>bus.</li>
+        <li>Define the term ‘protocol’.</li>
+        <li>Describe the 4 layer TCP/IP model:
+        <ul>
+        <li>application layer</li>
+        <li>transport layer</li>
+        <li>network layer></li>
+        <li>link layer.</li>
+        </ul>
+        <div>
+        Understand that the HTTP, HTTPS, SMTP, IMAP and
+        FTP protocols operate at the application layer.
+        Understand that the TCP and UDP protocols operate
+        at the transport layer.
+        </div>
+        <div>
+        Understand that the IP protocol operates at the
+        network layer.
+        </div>
+        </li>
         </ul>
         `,
         tasks: {
@@ -152,11 +169,22 @@ const networks = {
         _id: "3-topologies",
         desc: "An overview of the key concepts.",
         specDesc: `
-        Explain the following physical network topologies:
-        <ul>
-        <li>star</li>
-        <li>bus.</li>
-        </ul>
+        Explain the purpose and use of common network
+protocols including:
+  <ul>
+    <li>Ethernet</li>
+    <li>Wi-Fi</li>
+    <li>TCP (Transmission Control Protocol)</li>
+    <li>UDP (User Datagram Protocol)</li>
+    <li>IP (Internet Protocol)</li>
+    <li>HTTP (Hypertext Transfer Protocol)</li>
+    <li>HTTPS (Hypertext Transfer Protocol Secure)</li>
+    <li>FTP (File Transfer Protocol)</li>
+    <li>email protocols:</li>
+    <li>SMTP (Simple Mail Transfer Protocol)</li>
+    <li>IMAP (Internet Message Access Protocol).</li>
+  </ul>
+  '
         `,
         tasks: {
           task1: {
