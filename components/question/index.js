@@ -2,13 +2,13 @@ import {useState, useEffect, useRef } from 'react';
 
 import Button from '@material-ui/core/Button';
 
-import BinaryToDenary from './binaryToDenary';
-import DenaryToBinary from './denaryToBinary';
-import BinaryAddition from './binaryAddition';
-import BitShiftLeft from './bitShiftLeft';
-import BitShiftRight from './bitShiftRight';
-import BinaryToHex from './binaryToHex';
-import HexToBinary from './hexToBinary';
+import BinaryToDenary from './number-systems/binaryToDenary';
+import DenaryToBinary from './number-systems/denaryToBinary';
+import BinaryAddition from './number-systems/binaryAddition';
+import BitShiftLeft from './number-systems/bitShiftLeft';
+import BitShiftRight from './number-systems/bitShiftRight';
+import BinaryToHex from './number-systems/binaryToHex';
+import HexToBinary from './number-systems/hexToBinary';
 
 import numericQuestion from './numericQuestion';
 

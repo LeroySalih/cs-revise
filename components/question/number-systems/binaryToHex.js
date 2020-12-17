@@ -16,7 +16,7 @@ class BinaryToHex {
       <span>Convert <span className="question">{Number(this.question).toString(2).padStart(8, '0')}</span> to hex.</span>
       )
   }
-  checkAnswer = (a) => { console.log(a, parseInt(a, 16) == this.question, parseInt(a, 16) ,this.question); return parseInt(a, 16) == this.question }
+  checkAnswer = (a) =>  parseInt(a, 16) == this.question
 
 }
 

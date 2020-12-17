@@ -1,7 +1,7 @@
 import { graphConfig } from "./authConfig";
 
 export async function callMsGraph(accessToken) {
-    console.log('In callMsGraph')
+    
     const headers = new Headers();
     const bearer = `Bearer ${accessToken}`;
 
@@ -14,5 +14,6 @@ export async function callMsGraph(accessToken) {
 
     return fetch(graphConfig.graphMeEndpoint, options)
         .then(response => response.json())
-        .catch(error => console.log(error));
+        .catch(error => console.err(error));
 }
+
