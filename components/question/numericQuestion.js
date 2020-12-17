@@ -23,7 +23,7 @@ const numericQuestion = (questionType) => {
 
   const handleCheck = () => {
     // check the answer
-    const result = question.checkAnswer(parseInt(answer));
+    const result = question.checkAnswer(answer);
 
     if (result){
       setReadOnly(true);
