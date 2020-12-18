@@ -9,12 +9,12 @@ import { SignInButton, SignOutButton } from '../../src/ui';
 
 const NavBar = () => {    
   const { instance } = useMsal();
-  console.log('Instance', instance)
+  
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
 
   const handleLogin = (loginType) => {
-    console.log("Logging In.")
+    
     setAnchorEl(null);
 
     instance.loginPopup(loginRequest);

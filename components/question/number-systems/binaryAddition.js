@@ -8,7 +8,6 @@ import getRandomInt from './getRandomInt';
 class BinaryAddition {
 
   constructor() {
-    console.log('DenaryToBinary Created')
     this.question = [getRandomInt(8), getRandomInt(8)]
   }
 

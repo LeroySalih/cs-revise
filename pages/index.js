@@ -57,7 +57,7 @@ export async function getStaticProps (context) {
   const isConnected = await client.isConnected() // Returns true or false
 
   const topics = await db.collection('modules')
-    .find({}, {sort: "order"})
+    .find({status : "published"}, {sort: "order"})
     .project(
     {_id:1, 
       tags: 1, 

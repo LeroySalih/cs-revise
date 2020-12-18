@@ -10,12 +10,17 @@ import BitShiftRight from './number-systems/bitShiftRight';
 import BinaryToHex from './number-systems/binaryToHex';
 import HexToBinary from './number-systems/hexToBinary';
 
-import numericQuestion from './numericQuestion';
+import NetworksIntroduction from './networks/introduction';
 
+import numericQuestion from './numericQuestion';
+import multipleChoiceQuestion from './multiChoiceQuestion';
 
 
 const factory = ({type}) => {
-  switch (type){
+  console.log(type)
+  const key = (type && type.split("::")[0]) || '';
+  
+  switch (key){
     case 'binary-to-denary' : return numericQuestion(BinaryToDenary);
     case 'denary-to-binary' : return numericQuestion(DenaryToBinary);
     case 'binary-addition' : return numericQuestion(BinaryAddition);
@@ -23,7 +28,8 @@ const factory = ({type}) => {
     case 'bit-shift-right' : return numericQuestion(BitShiftRight);
     case 'binary-to-hex' : return numericQuestion(BinaryToHex);
     case 'hex-to-binary' : return numericQuestion(HexToBinary);
-    default: return <div>Unknown Type</div>
+    case 'networks-introduction' : console.log('Index::Type', type); return multipleChoiceQuestion(new NetworksIntroduction(type.split("::")[1]))
+    default: return <div>Unknown Type {JSON.stringify(type)}</div>
   }
   
 }

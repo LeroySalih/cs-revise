@@ -122,7 +122,7 @@ export async function getStaticPaths (){
 
   const {db} = await connectToDatabase();
 
-  const modules = await db.collection('modules').find({}).toArray();
+  const modules = await db.collection('modules').find({status: "published"}).toArray();
 
   const paths = modules.map((module) => ({params: {moduleId: module._id}}))
   return {

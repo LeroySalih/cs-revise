@@ -4,7 +4,7 @@ const dotenv = require('dotenv');
 dotenv.config();
 console.log(`Connecting to DB ${process.env.MONGODB_DB}`)
 
-const data = require('./topic-data.js');
+const data = require('./module-data.js');
 
 // Database Name
 const dbName = process.env.MONGODB_DB;
@@ -22,6 +22,7 @@ client.connect( async (err) => {
   await db.collection('modules').deleteMany({});
   await db.collection('modules').insertOne(data['networks']);
   await db.collection('modules').insertOne(data['number_systems']);
+  await db.collection('modules').insertOne(data['databases']);
 
   client.close();
 });
