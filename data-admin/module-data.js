@@ -66,7 +66,12 @@ data = {
       "order": 0,
       "_id": "transmission-media",
       "desc": "An overview of the key concepts.",
-      "specDesc": "<div>This is the <b>Spec Desc</b>.</div>",
+      "specDesc": `<div>
+      <p>Understand that networks can be wired or wireless.</p>
+      <p>Discuss the benefits and risks of wireless networks as opposed to wired networks.
+      <p>Know that wired networks can use different types of cable such as fibre and copper and when each would be appropriate.</p>
+      </div>
+      `,
       "tasks": {
         "task1": {
           "_id": 0,
@@ -194,6 +199,7 @@ data = {
           "type": "video",
           "videoKey": "awfwmDaiB2E"
         },
+        
       }
     },
     "binary-to-denary": {
@@ -204,7 +210,7 @@ data = {
       "specDesc": "<ul>\n        \n        </ul>",
       "tasks": {
         "task1": {
-          "_id": 0,
+          "_id": "task1",
           "order": 0,
           "title": "Watch this video",
           "desc": "Watch this video that shows the algorith (method) used to convert Binary Numbers into Denary.",
@@ -212,27 +218,27 @@ data = {
           "videoKey": "FBnWGDzlTo8"
         },
         "task2": {
-          "_id": 0,
+          "_id": "task2",
           "order": 0,
           "title": "Complete this quiz",
           "desc": "Practice converting Binary Numbers to Denary using this quiz.",
           "type": "question",
-          "quiz": [
-            {
-              "_id": "q2",
-              "type": "convertBinaryToDenary"
-            },
-            {
-              "_id": "q3",
-              "type": "convertBinaryToDenary"
-            },
-            {
-              "_id": "q4",
-              "type": "convertBinaryToDenary"
-            }
-          ],
+          
           "questionKey": "binary-to-denary"
-        }
+        },
+
+        "task3": {
+          "_id": "task3",
+          "order": 0,
+          "title": "Complete this quiz",
+          "desc": "Practice converting Binary Numbers to Denary using this quiz.",
+          "type": "question",
+          "questionKey": "order-binary"
+        },
+
+
+
+
       }
     },
     "denary-to-binary": {

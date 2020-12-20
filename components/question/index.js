@@ -9,20 +9,22 @@ import BitShiftLeft from './number-systems/bitShiftLeft';
 import BitShiftRight from './number-systems/bitShiftRight';
 import BinaryToHex from './number-systems/binaryToHex';
 import HexToBinary from './number-systems/hexToBinary';
+import ReorderBinary from './number-systems/reorderBinary';
 
 import NetworksIntroduction from './networks/introduction';
 
 import numericQuestion from './numericQuestion';
 import multipleChoiceQuestion from './multiChoiceQuestion';
-
+import reorderQuestion from './reorderQuestion';
 
 const factory = ({type}) => {
-  console.log(type)
+
   const key = (type && type.split("::")[0]) || '';
   
   switch (key){
     case 'binary-to-denary' : return numericQuestion(BinaryToDenary);
     case 'denary-to-binary' : return numericQuestion(DenaryToBinary);
+    case 'order-binary' : return reorderQuestion(ReorderBinary);
     case 'binary-addition' : return numericQuestion(BinaryAddition);
     case 'bit-shift-left' : return numericQuestion(BitShiftLeft);
     case 'bit-shift-right' : return numericQuestion(BitShiftRight);
