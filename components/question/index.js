@@ -12,6 +12,10 @@ import HexToBinary from './number-systems/hexToBinary';
 import ReorderBinary from './number-systems/reorderBinary';
 
 import NetworksIntroduction from './networks/introduction';
+import TransmissionMedium from './networks/transmission-medium';
+import Topologies from './networks/topologies';
+import Protocols from './networks/protocols';
+import CommonProtocols from './networks/common-protocols';
 
 import numericQuestion from './numericQuestion';
 import multipleChoiceQuestion from './multiChoiceQuestion';
@@ -30,7 +34,11 @@ const factory = ({type}) => {
     case 'bit-shift-right' : return numericQuestion(BitShiftRight);
     case 'binary-to-hex' : return numericQuestion(BinaryToHex);
     case 'hex-to-binary' : return numericQuestion(HexToBinary);
-    case 'networks-introduction' : console.log('Index::Type', type); return multipleChoiceQuestion(new NetworksIntroduction(type.split("::")[1]))
+    case 'networks-introduction' : return multipleChoiceQuestion(new NetworksIntroduction(type.split("::")[1]))
+    case 'networks-transmission-media' : return multipleChoiceQuestion(new TransmissionMedium(type.split("::")[1]))
+    case 'networks-topology' : return multipleChoiceQuestion(new Topologies(type.split("::")[1]))
+    case 'networks-protocols' : return multipleChoiceQuestion(new Protocols(type.split("::")[1]))
+    case 'networks-common-protocols' : return multipleChoiceQuestion(new CommonProtocols(type.split("::")[1]))
     default: return <div>Unknown Type {JSON.stringify(type)}</div>
   }
   

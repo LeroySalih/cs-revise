@@ -73,7 +73,7 @@ data = {
       </div>
       `,
       "tasks": {
-        "task1": {
+        "v1": {
           "_id": 0,
           "order": 0,
           "title": "Watch this video",
@@ -81,13 +81,56 @@ data = {
           "type": "video",
           "videoKey": "SoJIrPjLdJY"
         },
-        "task2": {
+        "q0": {
           "_id": 0,
           "order": 0,
-          "title": "Answer these questions",
-          "type": "quiz",
-          "videoUrl": ""
-        }
+          "type": "question",
+          "questionKey": "networks-transmission-media::0"
+        },
+        "q1": {
+          "_id": 0,
+          "order": 0,
+          "type": "question",
+          "questionKey": "networks-transmission-media::1"
+        },
+        "q2": {
+          "_id": 0,
+          "order": 0,
+          "type": "question",
+          "questionKey": "networks-transmission-media::2"
+        },
+        "q3": {
+          "_id": 0,
+          "order": 0,
+          "type": "question",
+          "questionKey": "networks-transmission-media::3"
+        },
+        "q4": {
+          "_id": 0,
+          "order": 0,
+          "type": "question",
+          "questionKey": "networks-transmission-media::4"
+        },
+        "q5": {
+          "_id": 0,
+          "order": 0,
+          "type": "question",
+          "questionKey": "networks-transmission-media::5"
+        },
+        "q6": {
+          "_id": 0,
+          "order": 0,
+          "type": "question",
+          "questionKey": "networks-transmission-media::6"
+        },
+        "q7": {
+          "_id": 0,
+          "order": 0,
+          "type": "question",
+          "questionKey": "networks-transmission-media::7"
+        },
+
+
       }
     },
     "topologies": {
@@ -105,13 +148,36 @@ data = {
           "type": "video",
           "videoKey": "lX1zzyatX7c"
         },
-        "task2": {
-          "_id": 0,
+        "q0": {
+          "_id": "q0",
           "order": 0,
-          "title": "Answer these questions",
-          "type": "quiz",
-          "videoUrl": ""
-        }
+          "type": "question",
+          "questionKey": "networks-topology::0"
+        },
+        "q1": {
+          "_id": "q1",
+          "order": 0,
+          "type": "question",
+          "questionKey": "networks-topology::1"
+        },
+        "q2": {
+          "_id": "q2",
+          "order": 1,
+          "type": "question",
+          "questionKey": "networks-topology::2"
+        },
+        "q3": {
+          "_id": "q3",
+          "order": 2,
+          "type": "question",
+          "questionKey": "networks-topology::3"
+        },
+        "q4": {
+          "_id": "q4",
+          "order": 3,
+          "type": "question",
+          "questionKey": "networks-topology::4"
+        },
       }
     },
     "protocols": {
@@ -129,13 +195,27 @@ data = {
           "type": "video",
           "videoKey": "pXiV5QN1J2Q"
         },
-        "task2": {
-          "_id": 0,
+        "q0": {
+          "_id": "q0",
           "order": 0,
           "title": "Answer these questions",
-          "type": "quiz",
-          "videoUrl": ""
+          "type": "question",
+          "questionKey": "networks-protocols::0"
+        },
+        "q1": {
+          "_id": "q1",
+          "order": 1,
+         
+          "type": "question",
+          "questionKey": "networks-protocols::1"
+        },
+        "q2": {
+          "_id": "q2",
+          "order": 1,
+          "type": "question",
+          "questionKey": "networks-protocols::2"
         }
+
       }
     },
     "common-protocols": {
@@ -153,13 +233,27 @@ data = {
           "type": "video",
           "videoKey": "szsLLFTZua0"
         },
-        "task2": {
-          "_id": 0,
-          "order": 0,
-          "title": "Answer these questions",
-          "type": "quiz",
-          "videoUrl": ""
+        "q0": {
+          "_id": "q0",
+          "type": "question",
+          "questionKey":"networks-common-protocols::0"
+        },
+        "q1": {
+          "_id": "q1",
+          "type": "question",
+          "questionKey":"networks-common-protocols::1"
+        },
+        "q2": {
+          "_id": "q2",
+          "type": "question",
+          "questionKey":"networks-common-protocols::2"
+        },
+        "q3": {
+          "_id": "q3",
+          "type": "question",
+          "questionKey":"networks-common-protocols::3"
         }
+
       }
     }
   }
