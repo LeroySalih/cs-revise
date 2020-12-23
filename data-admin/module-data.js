@@ -530,7 +530,7 @@ data = {
 
  "databases" : {
   "_id": "databases",
-  "status" : "draft",
+  "status" : "published",
   "tags": [
     "GCSE",
     "iGCSE",
@@ -541,9 +541,12 @@ data = {
   "metaDescription": "A set of lessons that will cover the use of databases.",
   "author": "Leroy Salih",
   "date": "2020-12-17",
-  "description": "Databases are the primary and most often used application to store, retrieve and manipulate data.  In these lessons we will lear how to design a table, learn to implement CRUD operations and how to link tables to create a complex data set",
+  "description": `<div>
+    <div>Databases are the primary and most often used application to store, retrieve and manipulate data.  In these lessons we will lear how to design a table, learn to implement CRUD operations and how to link tables to create a complex data set</div>
+    <div>You should use this module in conjunction with <a class="offSiteLink" href="https://repl.it/@mrsalih/SQLiteHost-3#main.py" target="__new">this repl.</a></div>
+    </div>`,
   "keywords": {
-    "bit": "A single digit of a binary number"
+    
   },
   "lessons": {
     "what-are-databases": {
@@ -560,6 +563,12 @@ data = {
           "desc": "Watch this video that provides an overview of databases and describes how and why databases are used in the real world.",
           "type": "video",
           "videoKey": "iXqTbVlL2HM"
+        },
+        "q1": {
+          "_id": "q1",
+          "order": 1,
+          "type": "question",
+          "questionKey": "databases-what-are-databases::0"
         }
       }
     },
@@ -578,28 +587,31 @@ data = {
           "type": "video",
           "videoKey": "cTeqo8A0QVw"
         },
-        "task2": {
-          "_id": 0,
+        "q0": {
+          "_id": "q0",
           "order": 0,
-          "title": "Complete this quiz",
-          "desc": "Practice converting Binary Numbers to Denary using this quiz.",
           "type": "question",
-          "quiz": [
-            {
-              "_id": "q2",
-              "type": "convertBinaryToDenary"
-            },
-            {
-              "_id": "q3",
-              "type": "convertBinaryToDenary"
-            },
-            {
-              "_id": "q4",
-              "type": "convertBinaryToDenary"
-            }
-          ],
-          "questionKey": "binary-to-denary"
-        }
+          "questionKey": "databases-how-are-databases-organised::0"
+        },
+        "q1": {
+          "_id": "q1",
+          "order": 0,
+          "type": "question",
+          "questionKey": "databases-how-are-databases-organised::1"
+        },
+        "q2": {
+          "_id": "q2",
+          "order": 0,
+          "type": "question",
+          "questionKey": "databases-how-are-databases-organised::2"
+        },
+        "q3": {
+          "_id": "q3",
+          "order": 0,
+          "type": "question",
+          "questionKey": "databases-how-are-databases-organised::3"
+        },
+        
       }
     },
     "how-to-design-a-table": {
@@ -617,66 +629,23 @@ data = {
           "type": "video",
           "videoKey": "dWNCcOC2Jdo"
         },
-        "task2": {
-          "_id": 0,
-          "order": 0,
-          "title": "Complete this quiz",
-          "desc": "Practice converting denary Numbers to 4 bit binary using this quiz.",
-          "type": "question",
-          "questionKey": "denary-to-binary",
-          "quiz": [
-            {
-              "_id": "q2",
-              "type": "convertDenaryToBinary"
-            },
-            {
-              "_id": "q3",
-              "type": "convertDenaryToBinary"
-            },
-            {
-              "_id": "q4",
-              "type": "convertDenaryToBinary"
-            }
-          ]
-        }
+        
       }
     },
     "how-to-use-sql-client": {  
-      "title": "4. How to design a table.",
+      "title": "4. How to use the SQL Client.",
       "order": 1,
       "_id": "how-to-use-sql-client",
-      "desc": "A look at the algorithm (method) to add two binary numbers.",
+      "desc": "A walkthrough of how to use the SQL client.",
       "specDesc": "<ul>\n        \n        </ul>",
       "tasks": {
         "task1": {
           "_id": 0,
           "order": 0,
           "title": "Watch this video",
-          "desc": "Watch this video that shows the algorith (method) used to convert denary numbers into binary.",
+          "desc": "Watch this video to learn how the use the repl.it SQL client.",
           "type": "video",
-          "videoKey": "XRZqYTcn6T0"
-        },
-        "task2": {
-          "_id": 0,
-          "order": 0,
-          "title": "Complete this quiz",
-          "desc": "Practice converting denary Numbers to 4 bit binary using this quiz.",
-          "type": "question",
-          "questionKey": "binary-addition",
-          "quiz": [
-            {
-              "_id": "q2",
-              "type": "addBinaryBinary"
-            },
-            {
-              "_id": "q3",
-              "type": "addBinaryBinary"
-            },
-            {
-              "_id": "q4",
-              "type": "addBinaryBinary"
-            }
-          ]
+          "videoKey": "Fs5u5JAZ2gk"
         }
       }
     },
@@ -684,180 +653,293 @@ data = {
       "title": "5. How to Insert Data.",
       "order": 1,
       "_id": "how-to-insert",
-      "desc": "A look at the algorithm (method) to multiply two binary numbers.",
+      "desc": "We will learn how to insert data into a table.",
       "specDesc": "<ul>\n        \n        </ul>",
       "tasks": {
         "task1": {
           "_id": 0,
           "order": 0,
           "title": "Watch this video",
-          "desc": "Watch this video that shows the algorith (method) used to convert denary numbers into binary.",
+          "desc": "Watch this video to see how to insert data into a table.",
           "type": "video",
-          "videoKey": "GM5r6H82h54"
+          "videoKey": "dWNCcOC2Jdo"
         },
-        "task2": {
-          "_id": 0,
-          "order": 0,
-          "title": "Complete this quiz",
-          "desc": "Practice multiplying binary Numbers.",
-          "type": "question",
-          "questionKey": "bit-shift-left",
-          "quiz": [
-            {
-              "_id": "q2",
-              "type": "multiplyBinary"
-            },
-            {
-              "_id": "q3",
-              "type": "multiplyBinary"
-            },
-            {
-              "_id": "q4",
-              "type": "multiplyBinary"
-            }
-          ]
-        }
+        
       }
     },
     "updates-and-deletes": {
       "title": "6. Updates and deletes.",
       "order": 1,
       "_id": "updates-and-deletes",
-      "desc": "A look at the algorithm (method) to divide two binary numbers.",
+      "desc": "We will learn how to update and delete data in our tables.",
       "specDesc": "<ul>\n        \n        </ul>",
       "tasks": {
         "task1": {
           "_id": 0,
           "order": 0,
           "title": "Watch this video",
-          "desc": "Watch this video that shows the algorithm (method) used to convert denary numbers into binary.",
+          "desc": "Watch this video to see how to update and delete specific rows in the table.",
           "type": "video",
-          "videoKey": "14U-kYw3wD4"
+          "videoKey": "9lPC9hWQOwQ"
         },
-        "task2": {
-          "_id": 0,
-          "order": 0,
-          "title": "Complete this quiz",
-          "desc": "Practice multiplying binary Numbers.",
-          "type": "question",
-          "questionKey": "bit-shift-right",
-          "quiz": [
-            {
-              "_id": "q2",
-              "type": "divideBinary"
-            },
-            {
-              "_id": "q3",
-              "type": "divideBinary"
-            },
-            {
-              "_id": "q4",
-              "type": "divideBinary"
-            }
-          ]
-        }
+       
       }
     },
     "slice-sort-filter": {
       "title": "7. Slice, Sort and Filter.",
       "order": 1,
       "_id": "slice-sort-filter",
-      "desc": "We look at what a hexadecimal number is, why we use them, how we use them and how we convert between hexadecimal and binary.",
+      "desc": "We will learn to extract the data that we want from a table.",
       "specDesc": "<ul>\n        \n        </ul>",
       "tasks": {
-        "task1": {
-          "_id": 0,
+        "v1": {
+          "_id": "v1",
           "order": 0,
           "title": "Watch this video",
-          "desc": "Watch this video that shows how, why and when we use hexadecimal numbers.",
+          "desc": "This video shows the slides to explain the concepts behind slice, sort and filter operations on a table.",
           "type": "video",
-          "videoKey": "yaqxMNQEHbI"
+          "videoKey": "xRXr5ms778o"
         },
-        "task2": {
-          "_id": "1",
-          "order": "1",
-          "title": "Complete this quiz.",
-          "desc": "Complete this quiz on hexadecomal numbers.",
-          "type": "question",
-          "questionKey": "binary-to-hex"
+        "v2": {
+          "_id": "v2",
+          "order": 1,
+          "title": "Watch this video",
+          "desc": "This video shows a demo of the concepts behind slice, sort and filter operations on a table.",
+          "type": "video",
+          "videoKey": "vo6pdTjbo3k"
         },
-        "task3": {
-          "_id": "2",
-          "order": "2",
-          "title": "Complete this quiz",
-          "desc": "Convert Hex numbers to binary",
-          "type": "question",
-          "questionKey": "hex-to-binary"
-        }
+       
       }
     },
     "primary-keys": {
       "title": "8. Primary Keys.",
       "order": 1,
       "_id": "primary-keys",
-      "desc": "We look at what a hexadecimal number is, why we use them, how we use them and how we convert between hexadecimal and binary.",
+      "desc": "We will learn about primary keys.",
       "specDesc": "<ul>\n        \n        </ul>",
       "tasks": {
-        "task1": {
+        "v1": {
           "_id": 0,
           "order": 0,
           "title": "Watch this video",
-          "desc": "Watch this video that shows how, why and when we use hexadecimal numbers.",
+          "desc": "This video is a slide deck to explain the concepts of a primary key.",
           "type": "video",
-          "videoKey": "yaqxMNQEHbI"
+          "videoKey": "5676ZLElFuo"
         },
-        "task2": {
-          "_id": "1",
-          "order": "1",
-          "title": "Complete this quiz.",
-          "desc": "Complete this quiz on hexadecomal numbers.",
-          "type": "question",
-          "questionKey": "binary-to-hex"
-        },
-        "task3": {
-          "_id": "2",
-          "order": "2",
-          "title": "Complete this quiz",
-          "desc": "Convert Hex numbers to binary",
-          "type": "question",
-          "questionKey": "hex-to-binary"
-        }
+        
       }
     },
     "linking-tables": {
-      "title": "9. Linking Tables.",
+      "title": "9. Linking Tables Demo.",
       "order": 1,
       "_id": "linking-tables",
-      "desc": "We look at what a hexadecimal number is, why we use them, how we use them and how we convert between hexadecimal and binary.",
+      "desc": "We will gain an overview of the concepts of Linking Tables.",
       "specDesc": "<ul>\n        \n        </ul>",
       "tasks": {
-        "task1": {
-          "_id": 0,
+        "v1": {
+          "_id": "v1",
           "order": 0,
           "title": "Watch this video",
-          "desc": "Watch this video that shows how, why and when we use hexadecimal numbers.",
+          "desc": "This video is a brief introduction to linking tables.",
           "type": "video",
-          "videoKey": "yaqxMNQEHbI"
+          "videoKey": "h-FOsHHiBR8"
         },
-        "task2": {
-          "_id": "1",
-          "order": "1",
-          "title": "Complete this quiz.",
-          "desc": "Complete this quiz on hexadecomal numbers.",
-          "type": "question",
-          "questionKey": "binary-to-hex"
+        "v2": {
+          "_id": "v2",
+          "order": 1,
+          "title": "Watch this video",
+          "desc": "This video is a slide deck to walk you through the concepts of a linked table.",
+          "type": "video",
+          "videoKey": "bCTImAOqt9k"
         },
-        "task3": {
-          "_id": "2",
-          "order": "2",
-          "title": "Complete this quiz",
-          "desc": "Convert Hex numbers to binary",
-          "type": "question",
-          "questionKey": "hex-to-binary"
-        }
+       
       }
     }
   }
+  },
+
+  "encoding-data" : {
+    "_id": "encoding-data",
+    "status" : "published",
+    "tags": [
+      "GCSE",
+      "iGCSE",
+      "Images, Bitmaps"
+    ],
+    "title": "Encoding Data",
+    "order": 4,
+    "metaDescription": "A set of lessons that will cover how computers encode media to digital numbers.",
+    "author": "Leroy Salih",
+    "date": "2020-12-17",
+    "description": `A set of lessons that will cover how computers encode media to digital numbers.`,
+    "keywords": {
+      
+    },
+    "lessons": {
+      "character-encoding": {
+        "title": "1. Character Encoding?",
+        "order": 0,
+        "_id": "what-are-databases",
+        "desc": "LO: Be able to describe how the ASCII and Unicode Tables work.",
+        "specDesc": "<ul>\n        \n        </ul>",
+        "tasks": {
+          "task1": {
+            "_id": 0,
+            "order": 0,
+            "title": "Watch this video",
+            "desc": "Watch this video to see how we encode text data to binary numbers.",
+            "type": "video",
+            "videoKey": "O2Hup0y-kAU"
+          }
+        }
+      },
+      "sound-encoding": {
+        "title": "2. Sound Encoding?",
+        "order": 1,
+        "_id": "sound-encoding",
+        "desc": "",
+        "specDesc": "<ul>\n        \n        </ul>",
+        "tasks": {
+          "task1": {
+            "_id": 0,
+            "order": 0,
+            "title": "Watch this video",
+            "desc": "Watch this video to understand how we encode sound to binary numbers.",
+            "type": "video",
+            "videoKey": "aewJrnrhPoE"
+          },
+          
+        }
+      },
+      "image-encoding": {
+        "title": "3. Image Encoding.",
+        "order": 1,
+        "_id": "image-encoding",
+        "desc": ".",
+        "specDesc": "<ul>\n        \n        </ul>",
+        "tasks": {
+          "task1": {
+            "_id": 0,
+            "order": 0,
+            "title": "Watch this video",
+            "desc": "Watch this video to understand how we encode images to binary numbers.",
+            "type": "video",
+            "videoKey": "0TeQPizV1kg"
+          },
+          
+        }
+      },
+      "run-length-encoding": {  
+        "title": "4. Run Length Encoding.",
+        "order": 1,
+        "_id": "run-length-encoding",
+        "desc": ".",
+        "specDesc": "<ul>\n        \n        </ul>",
+        "tasks": {
+          "task1": {
+            "_id": 0,
+            "order": 0,
+            "title": "Watch this video",
+            "desc": "Watch this video to understand how we use the Run Length Encoding algorithm.",
+            "type": "video",
+            "videoKey": "D5tL7cs8MbU"
+          }
+        }
+      },
+      "huffman-encoding": {
+        "title": "5. Huffman Encoding.",
+        "order": 1,
+        "_id": "huffman-encoding",
+        "desc": "We will learn to use huffman encoding.",
+        "specDesc": "",
+        "tasks": {
+          "task1": {
+            "_id": 0,
+            "order": 0,
+            "title": "Watch this video",
+            "desc": "Watch this video to understand how we use the Huffman Encoding algorithm.",
+            "type": "video",
+            "videoKey": "TxMSMoHFgJI"
+          },
+          
+        }
+      }
+    }
+  },
+
+  "html-css" : {
+    "_id": "html-css",
+    "status" : "draft",
+    "tags": [
+      "GCSE",
+      "iGCSE",
+      "Images, Bitmaps"
+    ],
+    "title": "Web Pages",
+    "order": 4,
+    "metaDescription": "A set of lessons that will cover how HTML and CSS are used to create webpages.",
+    "author": "Leroy Salih",
+    "date": "2020-12-17",
+    "description": `A set of lessons that will cover how HTML and CSS are used to create webpages.`,
+    "keywords": {
+      
+    },
+    "lessons": {
+      "structure-of-element": {
+        "title": "Structure of an Element",
+        "order": 0,
+        "_id": "structure-of-element",
+        "desc": "LO: Be able to describe the parts of a HTML element.",
+        "specDesc": "<ul>\n        \n        </ul>",
+        "tasks": {
+          "v1": {
+            "_id": 0,
+            "order": 0,
+            "title": "Watch this video",
+            "desc": "Watch this video to see how HTML elements are structured.",
+            "type": "video",
+            "videoKey": "ZoJzKeulJGE"
+          }
+        }
+      },
+
+      "basic-html": {
+        "title": "2. Basic HTML Elements",
+        "order": 0,
+        "_id": "basic-html",
+        "desc": "LO: Be able to use the core HTML elements to describe the structure of a document.",
+        "specDesc": "<ul>\n        \n        </ul>",
+        "tasks": {
+          "v1": {
+            "_id": 0,
+            "order": 0,
+            "title": "Watch this video",
+            "desc": "Watch this video to see how HTML elements are structured.",
+            "type": "video",
+            "videoKey": "ZoJzKeulJGE"
+          }
+        }
+      },
+
+      "basic-css": {
+        "title": "3. Basic CSS Elements",
+        "order": 0,
+        "_id": "basic-css",
+        "desc": "LO: Be able to use the core CSS rules to describe the style of a document.",
+        "specDesc": "<ul>\n        \n        </ul>",
+        "tasks": {
+          "v1": {
+            "_id": 0,
+            "order": 0,
+            "title": "Watch this video",
+            "desc": "Watch this video to see how HTML elements are structured.",
+            "type": "video",
+            "videoKey": "ZoJzKeulJGE"
+          }
+        }
+      },
+      
+    }
   }
 
 }

@@ -8,6 +8,11 @@ import Task from '../../components/task';
 import Question from '../../components/question';
 
 const ModulePage = ({module}) => {
+  if (!module)
+    return `<div>No Module Found</div>`
+
+  console.log(module);
+  
   return (
     <div className="container">
       <Head>
@@ -17,9 +22,8 @@ const ModulePage = ({module}) => {
       <h1>
         <Link href="/">Home</Link>&nbsp;&gt;&nbsp;{module && module.title}
       </h1>
-      <div className="moduleDescription">
-          
-          {module && module.description}
+      <div className="moduleDescription" dangerouslySetInnerHTML={{__html: module.description}}>
+
       </div>
 
       <div className="pageGrid">
@@ -54,6 +58,10 @@ const ModulePage = ({module}) => {
         </div>
       </div>
       <style jsx>{`
+
+        .offSiteLink {
+          color: blue;
+        }
       
         h1 {
           font-family : 'Oswald'

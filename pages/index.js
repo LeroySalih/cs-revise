@@ -5,6 +5,7 @@ import {connectToDatabase} from '../utils/mongodb';
 import { AuthenticatedTemplate, UnauthenticatedTemplate } from "@azure/msal-react";
 
 export default function Home({data}) {
+  console.log(data);
   return (
     <div className={styles.container}>
       <Head>
@@ -35,7 +36,7 @@ export default function Home({data}) {
             <Link key={i} href={`/modules/${t._id}`} >
               <div className={styles.card}>
               <h3>{t.title} &rarr;</h3>
-              <p>{t.description}</p>
+              <div dangerouslySetInnerHTML={{__html: t.description}}></div>
               </div>
             </Link>
           ))}

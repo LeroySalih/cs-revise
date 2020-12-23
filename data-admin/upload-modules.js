@@ -23,6 +23,7 @@ client.connect( async (err) => {
   await db.collection('modules').insertOne(data['networks']);
   await db.collection('modules').insertOne(data['number_systems']);
   await db.collection('modules').insertOne(data['databases']);
+  await db.collection('modules').insertOne(data['encoding-data']);
 
   client.close();
 });
