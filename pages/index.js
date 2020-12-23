@@ -24,7 +24,7 @@ export default function Home({data}) {
           </UnauthenticatedTemplate>
 
         <h1 className={styles.title}>
-          Welcome to CS Revise!
+          Welcome to CS Revise 💻
         </h1>
 
         <p className={styles.description}>
