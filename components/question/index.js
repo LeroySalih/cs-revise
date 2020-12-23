@@ -19,10 +19,12 @@ import CommonProtocols from './networks/common-protocols';
 
 import WhatAreDatabases from './databases/what-are-databases';
 import HowAreDatabasesAreOrganised from './databases/how-are-databases-organised';
+import HowToDesignATable from './databases/how-to-design-a-table';
 
 import numericQuestion from './numericQuestion';
 import multipleChoiceQuestion from './multiChoiceQuestion';
 import reorderQuestion from './reorderQuestion';
+
 
 
 const factory = ({type}) => {
@@ -45,6 +47,7 @@ const factory = ({type}) => {
     case 'networks-common-protocols' : return multipleChoiceQuestion(new CommonProtocols(type.split("::")[1]))
     case 'databases-what-are-databases' : return multipleChoiceQuestion(new WhatAreDatabases(type.split("::")[1]))
     case 'databases-how-are-databases-organised' : return multipleChoiceQuestion(new HowAreDatabasesAreOrganised(type.split("::")[1]))
+    case 'databases-how-to-design-a-table' : return multipleChoiceQuestion(new HowToDesignATable(type.split("::")[1]))
 
     default: return <div>Unknown Type {JSON.stringify(type)}</div>
   }
