@@ -12,6 +12,7 @@ const NavBar = () => {
   
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
+  const DEV = false;
 
   const handleLogin = (loginType) => {
     
@@ -39,7 +40,7 @@ const NavBar = () => {
           <SignOutButton />
         </AuthenticatedTemplate>
         <UnauthenticatedTemplate>
-          <SignInButton />
+          { DEV && <SignInButton />}
         </UnauthenticatedTemplate>
       </div>
       
@@ -51,6 +52,7 @@ const NavBar = () => {
           display: flex;
           background-color: silver;
           align-items: center;
+          height: 4rem;
         }
 
         .siteHeading {

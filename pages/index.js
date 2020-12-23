@@ -20,7 +20,7 @@ export default function Home({data}) {
           </AuthenticatedTemplate>
 
           <UnauthenticatedTemplate>
-              <center>Please sign-in to see your profile information.</center>
+              <center></center>
           </UnauthenticatedTemplate>
 
         <h1 className={styles.title}>
