@@ -33,7 +33,7 @@ export default function Home({data}) {
 
         <div className={styles.grid}>
           {data && data.map((t, i) => (
-            <Link key={i} href={`/modules/${t._id}`} >
+            <Link key={i} href={`/modules/${t._id}`} > 
               <div className={styles.card}>
               <h3>{t.title} &rarr;</h3>
               <div dangerouslySetInnerHTML={{__html: t.description}}></div>
