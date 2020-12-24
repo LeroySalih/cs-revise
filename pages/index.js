@@ -5,7 +5,7 @@ import {connectToDatabase} from '../utils/mongodb';
 import { AuthenticatedTemplate, UnauthenticatedTemplate } from "@azure/msal-react";
 
 export default function Home({data}) {
-  console.log(data);
+  
   return (
     <div className={styles.container}>
       <Head>

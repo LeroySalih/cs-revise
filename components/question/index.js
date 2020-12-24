@@ -20,10 +20,16 @@ import CommonProtocols from './networks/common-protocols';
 import WhatAreDatabases from './databases/what-are-databases';
 import HowAreDatabasesAreOrganised from './databases/how-are-databases-organised';
 import HowToDesignATable from './databases/how-to-design-a-table';
+import HowToInsertData from './databases/how-to-insert';
+import UploadAndDelete from './databases/upload-and-delete';
+import SliceSortFilter from './databases/slice-sort-filter';
+
 
 import numericQuestion from './numericQuestion';
 import multipleChoiceQuestion from './multiChoiceQuestion';
 import reorderQuestion from './reorderQuestion';
+import LinkingTables from './databases/linking-tables';
+
 
 
 
@@ -48,7 +54,10 @@ const factory = ({type}) => {
     case 'databases-what-are-databases' : return multipleChoiceQuestion(new WhatAreDatabases(type.split("::")[1]))
     case 'databases-how-are-databases-organised' : return multipleChoiceQuestion(new HowAreDatabasesAreOrganised(type.split("::")[1]))
     case 'databases-how-to-design-a-table' : return multipleChoiceQuestion(new HowToDesignATable(type.split("::")[1]))
-
+    case 'databases-how-to-insert-data' : return multipleChoiceQuestion(new HowToInsertData(type.split("::")[1]))
+    case 'databases-upload-and-deletes' : return multipleChoiceQuestion(new UploadAndDelete(type.split("::")[1]))
+    case 'databases-slice-sort-filter' : return multipleChoiceQuestion(new SliceSortFilter(type.split("::")[1]))
+    case 'databases-linking-tables' : return multipleChoiceQuestion(new LinkingTables(type.split("::")[1]))
     default: return <div>Unknown Type {JSON.stringify(type)}</div>
   }
   

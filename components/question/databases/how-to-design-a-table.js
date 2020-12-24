@@ -10,32 +10,32 @@ class HowToDesignATable {
   questions = [
     
     {
-      text: 'Most applications include:',
+      text: 'The most common Database language is:',
       answers : [
-        {text: 'Functionality and Audio.', isCorrect: false},
-        {text: 'Functionality and Output.', isCorrect: false},
-        {text: 'Functionality and data.', isCorrect: true},
-        {text: 'Data and graphics.', isCorrect: false},
+        {text: 'Python.', isCorrect: false},
+        {text: 'CRUD.', isCorrect: false},
+        {text: 'SQL.', isCorrect: true},
+        {text: 'Javascript.', isCorrect: false},
       ]
     },
     
     {
-      text: 'CRUD functionality is an acronym for:',
+      text: 'A table name should be:',
       answers : [
-        {text: 'Create, recycle, upload, distribute.', isCorrect: false},
-        {text: 'Create, read, update and delete.', isCorrect: true},
-        {text: 'Create, read, upload and data.', isCorrect: true},
-        {text: 'Create, reload, update and distribute.', isCorrect: false},
+        {text: 'Able to hold names and numbers.', isCorrect: false},
+        {text: 'In all capital letters.', isCorrect: false},
+        {text: 'Short and easy to ready.', isCorrect: false},
+        {text: 'A noun and a plural.', isCorrect: true},
       ]
     },
 
     {
-      text: 'Microsoft Access can be used for:',
+      text: 'A good data type for a field that contains pupil names is:',
       answers : [
-        {text: 'Upto 3 million users.', isCorrect: false},
-        {text: 'Upto 300 users.', isCorrect: true},
-        {text: 'Upto 30 users.', isCorrect: true},
-        {text: 'Upto 3 users.', isCorrect: false},
+        {text: 'integer.', isCorrect: false},
+        {text: 'text (varchar).', isCorrect: true},
+        {text: 'real.', isCorrect: false},
+        {text: 'boolean.', isCorrect: false},
       ]
     },
     

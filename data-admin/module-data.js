@@ -635,6 +635,18 @@ data = {
           "type": "question",
           "questionKey": "databases-how-to-design-a-table::0"
         },
+        "q1": {
+          "_id": "q1",
+          "order": 1,
+          "type": "question",
+          "questionKey": "databases-how-to-design-a-table::1"
+        },
+        "q2": {
+          "_id": "q2",
+          "order": 2,
+          "type": "question",
+          "questionKey": "databases-how-to-design-a-table::2"
+        },
         
       }
     },
@@ -668,9 +680,27 @@ data = {
           "title": "Watch this video",
           "desc": "Watch this video to see how to insert data into a table.",
           "type": "video",
-          "videoKey": "dWNCcOC2Jdo"
+          "videoKey": "KF45WkxpHCU"
         },
-        
+        "q0": {
+          "_id": "q0",
+          "order": 0,
+          "type": "question",
+          "questionKey": "databases-how-to-insert-data::0"
+        },
+        "q1": {
+          "_id": "q1",
+          "order": 0,
+          "type": "question",
+          "questionKey": "databases-how-to-insert-data::1"
+        },
+        "q2": {
+          "_id": "q2",
+          "order": 0,
+          "type": "question",
+          "questionKey": "databases-how-to-insert-data::2"
+        },
+       
       }
     },
     "updates-and-deletes": {
@@ -687,6 +717,24 @@ data = {
           "desc": "Watch this video to see how to update and delete specific rows in the table.",
           "type": "video",
           "videoKey": "9lPC9hWQOwQ"
+        },
+        "q0": {
+          "_id": "q0",
+          "order": 0,
+          "type": "question",
+          "questionKey": "databases-upload-and-deletes::0"
+        },
+        "q1": {
+          "_id": "q1",
+          "order": 1,
+          "type": "question",
+          "questionKey": "databases-upload-and-deletes::1"
+        },
+        "q2": {
+          "_id": "q2",
+          "order": 2,
+          "type": "question",
+          "questionKey": "databases-upload-and-deletes::2"
         },
        
       }
@@ -714,7 +762,25 @@ data = {
           "type": "video",
           "videoKey": "vo6pdTjbo3k"
         },
-       
+        
+        "q0": {
+          "_id": "q0",
+          "order": 0,
+          "type": "question",
+          "questionKey": "databases-slice-sort-filter::0"
+        },
+        "q1": {
+          "_id": "q1",
+          "order": 0,
+          "type": "question",
+          "questionKey": "databases-slice-sort-filter::1"
+        },
+        "q2": {
+          "_id": "q2",
+          "order": 0,
+          "type": "question",
+          "questionKey": "databases-slice-sort-filter::2"
+        },
       }
     },
     "primary-keys": {
@@ -758,6 +824,19 @@ data = {
           "type": "video",
           "videoKey": "bCTImAOqt9k"
         },
+        "q0": {
+          "_id" : "q0",
+          "order" : "0",
+          "type" : "question",
+          "questionKey" : "databases-linking-tables::0"  
+        },
+        "q1": {
+          "_id" : "q1",
+          "order" : "0",
+          "type" : "question",
+          "questionKey" : "databases-linking-tables::1"  
+        }
+
        
       }
     }
