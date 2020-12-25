@@ -45,7 +45,7 @@ export default function Home({data}) {
       </main>
 
       <footer className={styles.footer}>
-        <div>Footer Goes Here</div>
+        <div>mr-salih</div>
       </footer>
     </div>
   )
