@@ -9,7 +9,7 @@ const style = {
 };
 const Container = ({ items, onChange, title }) => {
   {
-    console.log('items', items)
+
     const prep = (items) => {
       if (items === undefined || items === null) {
         return null;

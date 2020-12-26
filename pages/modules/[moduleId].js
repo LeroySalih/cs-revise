@@ -11,7 +11,7 @@ const ModulePage = ({module}) => {
   if (!module)
     return `<div>No Module Found</div>`
 
-  console.log(module);
+  
   
   return (
     <div className="container">

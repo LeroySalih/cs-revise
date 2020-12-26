@@ -8,11 +8,8 @@ const multiChoiceQuestion = (questionType) => {
 
   const [answer, setAnswer] = useState('');
   const [question, setQuestion] = useState('');
-
-  console.log('QuestionType', questionType)
-
+  
   useEffect(()=> {
-    console.log('QuestionType', questionType)
     setQuestion(questionType)
   }, [])
   

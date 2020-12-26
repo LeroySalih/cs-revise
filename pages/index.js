@@ -33,7 +33,7 @@ export default function Home({data}) {
 
         <div className={styles.grid}>
           {data && data.map((t, i) => (
-            <Link key={i} href={`/modules/${t._id}`} > 
+            <Link className="heading-link" key={i} href={`/modules/${t._id}`} > 
               <div className={styles.card}>
               <h3>{t.title} &rarr;</h3>
               <div dangerouslySetInnerHTML={{__html: t.description}}></div>
@@ -47,6 +47,12 @@ export default function Home({data}) {
       <footer className={styles.footer}>
         <div>mr-salih</div>
       </footer>
+      <style jsx>{`
+        heading-link {
+          cursor: pointer;
+        }
+      `}
+      </style>
     </div>
   )
 }

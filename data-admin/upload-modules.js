@@ -2,7 +2,7 @@ const MongoClient = require('mongodb').MongoClient;
 const assert = require('assert');
 const dotenv = require('dotenv');
 dotenv.config();
-console.log(`Connecting to DB ${process.env.MONGODB_DB}`)
+console.info(`Connecting to DB ${process.env.MONGODB_DB}`)
 
 const data = require('./module-data.js');
 
@@ -15,7 +15,7 @@ const client = new MongoClient(process.env.MONGODB_URI, { useUnifiedTopology: tr
 // Use connect method to connect to the Server
 client.connect( async (err) => {
   assert.strictEqual(null, err);
-  console.log("Connected successfully to server");
+  console.info("Connected successfully to server");
 
   const db = client.db(dbName);
 

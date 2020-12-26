@@ -15,15 +15,14 @@ const ProfileContent = () => {
     const [graphData, setGraphData] = useState(null);
   
     function requestProfileData() {
-        console.log('Getting Silent Request with account', account)
+        
         if (account) {
           instance.acquireTokenSilent({
             scopes: ["user.read"],
             account: account
         }).then((response) => {
-            console.log('Successful Silent Request')
             callMsGraph(response.accessToken).then(response => setGraphData(response));
-        }).catch((e) => console.log('Error:', e.message, account ))
+        }).catch((e) => console.error('Error:', e.message, account ))
         }
         
     }

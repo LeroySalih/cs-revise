@@ -18,14 +18,14 @@ const reorderQuestion = (questionType) => {
   []); 
 
   const handleInput = (items) => {
-    console.log('New Items:', items);
+
     setCorrect(null);
     setAnswer(items);
   }
 
   const handleCheck = () => {
     // check the answer
-    console.log(`Checking:`, answer)
+
     
     const result = question.checkAnswer(answer);
 

@@ -862,7 +862,7 @@ data = {
     },
     "lessons": {
       "character-encoding": {
-        "title": "1. Character Encoding?",
+        "title": "1. Character Encoding.",
         "order": 0,
         "_id": "what-are-databases",
         "desc": "LO: Be able to describe how the ASCII and Unicode Tables work.",
@@ -875,11 +875,17 @@ data = {
             "desc": "Watch this video to see how we encode text data to binary numbers.",
             "type": "video",
             "videoKey": "O2Hup0y-kAU"
+          },
+          "q0": {
+            "_id": "q0",
+            "order": 0,
+            "type": "question",
+            "questionKey": "encoding-data-character-encoding::0"
           }
         }
       },
       "sound-encoding": {
-        "title": "2. Sound Encoding?",
+        "title": "2. Sound Encoding.",
         "order": 1,
         "_id": "sound-encoding",
         "desc": "",
