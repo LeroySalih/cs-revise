@@ -30,6 +30,7 @@ import multipleChoiceQuestion from './multiChoiceQuestion';
 import reorderQuestion from './reorderQuestion';
 import LinkingTables from './databases/linking-tables';
 import CharacterEncoding from './encoding-data/character-encoding';
+import SoundEncoding from './encoding-data/sound-encoding';
 
 
 
@@ -61,6 +62,7 @@ const factory = ({type}) => {
     case 'databases-linking-tables' : return multipleChoiceQuestion(new LinkingTables(type.split("::")[1]))
     
     case 'encoding-data-character-encoding' : return multipleChoiceQuestion(new CharacterEncoding(type.split("::")[1]))
+    case 'encoding-data-sound-encoding' : return multipleChoiceQuestion(new SoundEncoding(type.split("::")[1]))
     default: return <div>Unknown Type {JSON.stringify(type)}</div>
   }
   
