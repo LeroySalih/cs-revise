@@ -2,26 +2,26 @@ import Button from '@material-ui/core/Button'
 import axios from 'axios';
 import React, { useEffect, useState } from "react";
 
-const ChallengesIndex = () => {
+const ChallengesIndex =  () => {
 
   const [msg, setMsg] = useState('');
+  const [challenges, setChallenges] = useState(null);
 
-  const handleSendApiCall = async () => {
-    console.log('Api Call Simulated');
 
-    const resp = await axios.post('/api/challenge/leroy/1',
-    {
-      'main': `#This is the challenge file
-print("Hello World")`
-    });
-
-    setMsg(resp.data)
-  }
+  useEffect(async ()=> {
+    const res = await axios.get('/api/challenges');
+    console.log(res.data)
+    setChallenges(res.data.result)
+  }, [])
+  
 
   return <div className="container">
           <h1>This is the Challenges Index Page</h1>
-          <a href="https://gitpod.io/#CHALLENGE_ID=1,CHALLENGE_TITLE=Learning Lists,EMAIL=sleroy@bisak.org/https://github.com/LeroySalih/python-base">Link to Challenge 1</a>
-          <pre>{JSON.stringify(msg, null, 2)}</pre>
+          
+          {challenges && challenges.map((c, i) => (<div>
+            <a href={`https://gitpod.io/#CHALLENGE_ID=${c._id},CHALLENGE_TITLE=${c.title},EMAIL=sleroy@bisak.org/https://github.com/LeroySalih/python-base`}>{c.title}</a>
+            <div>{c.desc}</div>
+          </div>) )}
         </div>
 }
 
