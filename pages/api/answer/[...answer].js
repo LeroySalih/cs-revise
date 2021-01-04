@@ -78,7 +78,7 @@ export default async function handler(req, res) {
     const isConnected = await client.isConnected() // Returns true or false
 
     // add to database
-    const {result} = await db.collection('answers')
+    const result = await db.collection('answers')
                             .insertOne(challengeSubmission);
 
     // console.log(answerObj.ts, 'Answer Object: ', answerObj, result)
