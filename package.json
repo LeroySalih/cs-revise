@@ -6,7 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "deploy" : "git add . && git commit -m 'Deploying Build' && git push origin"
+    "deploy": "git add . && git commit -m 'Deploying Build' && git push origin"
   },
   "dependencies": {
     "@azure/msal-browser": "^2.8.0",
@@ -14,6 +14,7 @@
     "@material-ui/core": "^4.11.2",
     "@material-ui/icons": "^4.11.2",
     "axios": "^0.21.1",
+    "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "immutability-helper": "^3.1.1",
     "moment": "^2.29.1",

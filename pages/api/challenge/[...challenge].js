@@ -1,8 +1,24 @@
 import {connectToDatabase} from '../../../components/mongodb';
 import moment from 'moment';
 
+import Cors from 'cors'
+import initMiddleware from '../../../src/init-middleware';
+
+// Initialize the cors middleware
+const cors = initMiddleware(
+    // You can read more about the available options here: https://github.com/expressjs/cors#configuration-options
+    Cors({
+      // Only allow requests with GET, POST and OPTIONS
+      methods: ['GET', 'POST', 'OPTIONS'],
+    })
+  )
+  
+
+
 export default async function handler(req, res) {
 
+    // Run cors
+    await cors(req, res)
 
     const {
         query: {challenge} 
@@ -37,7 +53,7 @@ export default async function handler(req, res) {
         .insertOne(challengeSubmission)
       
 
-    console.log(moment().format('yyyy-mm-DD-hh:mm:ss-SSSS'), result.ok)
+    console.log(moment().format('yyyy-mm-DD-hh:mm:ss-SSSS'), 'Result: ', result.ok)
     res.json({status: result.ok === 1, msg: "Challenge Submitted"});
 
 }
