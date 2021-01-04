@@ -67,7 +67,7 @@ export default async function handler(req, res) {
     const main = body.main
 
     const answerObj = {
-        _id: id, email, results, successes, fails, progress, main, ts: moment().format('yyyy-mm-DD-hh:mm:ss-SSSS')
+        id, email, results, successes, fails, progress, main, ts: moment().format('yyyy-mm-DD-hh:mm:ss-SSSS')
     };
 
     // check if the request is from a valid user.
