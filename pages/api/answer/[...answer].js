@@ -23,7 +23,7 @@ export default async function handler(req, res) {
     console.log('Running API call')
     
     const {
-        query: {answer} 
+        query: {answer}  
     } = req;
 
     // const email = answer[0];
