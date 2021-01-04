@@ -55,8 +55,17 @@ export default async function handler(req, res) {
     //const {result} = await db.collection('challenges')
     //    .insertOne(challengeSubmission)
       
+    const results = json.parse(body.results);
+    const successes = parseInt(body.successes);
+    const fails = parseInt(body.fails);
+    const progress = parseFloat(body.progerss);
+    const main = body.main
 
-    console.log(moment().format('yyyy-mm-DD-hh:mm:ss-SSSS'), 'Result: ', body)
+    const answerObj = {
+        results, successes, fails, progress, main
+    };
+
+    console.log(moment().format('yyyy-mm-DD-hh:mm:ss-SSSS'), 'Answer Object: ', answerObj)
     res.json({status: 'OK', msg: "Challenge Submitted"});
 
 }
