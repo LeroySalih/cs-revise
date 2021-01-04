@@ -79,7 +79,7 @@ export default async function handler(req, res) {
 
     // add to database
     const result = await db.collection('answers')
-                            .updateOne({_id: email}, {$push : {'1.answers' : answerObj}}, {upsert: true});
+                            .updateOne({_id: email}, {$push : {[challengeId] : answerObj}}, {upsert: true});
 
     // console.log(answerObj.ts, 'Answer Object: ', answerObj, result)
     res.json({status: result.ok === 1, msg: "Answer Submitted"});
