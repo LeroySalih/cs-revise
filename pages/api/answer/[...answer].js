@@ -58,7 +58,7 @@ export default async function handler(req, res) {
     //const {result} = await db.collection('challenges')
     //    .insertOne(challengeSubmission)
       
-    const _id = body.id; 
+    const challengeId = body.id; 
     const email = body.email;
     const results = JSON.parse(body.results);
     const successes = parseInt(body.successes);
@@ -67,7 +67,7 @@ export default async function handler(req, res) {
     const main = body.main
 
     const answerObj = {
-        _id, email, results, successes, fails, progress, main, ts: moment().format('yyyy-mm-DD-hh:mm:ss-SSSS')
+      challengeId, email, results, successes, fails, progress, main, ts: moment().format('yyyy-mm-DD-hh:mm:ss-SSSS')
     };
 
     // check if the request is from a valid user.
@@ -79,7 +79,7 @@ export default async function handler(req, res) {
 
     // add to database
     const result = await db.collection('answers')
-                            .updateOne({_id: email}, {$push : {answers : answerObj}}, {upsert: true});
+                            .updateOne({_id: email}, {$push : {'1.answers' : answerObj}}, {upsert: true});
 
     // console.log(answerObj.ts, 'Answer Object: ', answerObj, result)
     res.json({status: result.ok === 1, msg: "Answer Submitted"});
