@@ -67,10 +67,21 @@ export default async function handler(req, res) {
     const main = body.main
 
     const answerObj = {
-        id, email, results, successes, fails, progress, main
+        _id: id, email, results, successes, fails, progress, main
     };
 
+    // check if the request is from a valid user.
+    // log to a db.
+
+    const { client, db } = await connectToDatabase()
+
+    const isConnected = await client.isConnected() // Returns true or false
+
+    // add to database
+    const {result} = await db.collection('answers')
+                            .insertOne(challengeSubmission);
+
     console.log(moment().format('yyyy-mm-DD-hh:mm:ss-SSSS'), 'Answer Object: ', answerObj)
-    res.json({status: 'OK', msg: "Challenge Submitted"});
+    res.json({status: result.ok == 1, msg: "Answer Submitted"});
 
 }
