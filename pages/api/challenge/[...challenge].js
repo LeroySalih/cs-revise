@@ -51,6 +51,6 @@ export default async function handler(req, res) {
       
 
     console.log(moment().format('yyyy-mm-DD-hh:mm:ss-SSSS'), 'Result: ', result)
-    res.json({status: result.ok === 1, msg: result});
+    res.json({status: result.ok === 1, ...result});
 
 }
