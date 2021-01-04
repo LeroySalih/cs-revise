@@ -20,6 +20,8 @@ export default async function handler(req, res) {
     // Run cors
     await cors(req, res)
 
+    console.log('Running API call')
+    
     const {
         query: {challenge} 
     } = req;
@@ -30,6 +32,7 @@ export default async function handler(req, res) {
 
     if (challenge.length !== 2 || req.method !== 'POST'){
         res.json({status: 'ERROR', msg: "Incorrect message format"})
+        console.error('Incorrect message format')
         return;
     }
 
