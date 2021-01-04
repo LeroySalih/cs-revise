@@ -58,7 +58,7 @@ export default async function handler(req, res) {
     //const {result} = await db.collection('challenges')
     //    .insertOne(challengeSubmission)
       
-    const _id = body.id;
+    const _id = body.id; 
     const email = body.email;
     const results = JSON.parse(body.results);
     const successes = parseInt(body.successes);
