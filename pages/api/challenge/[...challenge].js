@@ -8,42 +8,36 @@ import initMiddleware from '../../../src/init-middleware';
 const cors = initMiddleware(
     // You can read more about the available options here: https://github.com/expressjs/cors#configuration-options
     Cors({
-      // Only allow requests with GET, POST and OPTIONS
-      methods: ['GET', 'POST', 'OPTIONS'],
+      // Only allow requests with GET
+      methods: ['GET' ],
     })
   )
   
 
-
+/*
+  Read a challenge from the DB and send it to the client 
+*/
 export default async function handler(req, res) {
 
     // Run cors
     await cors(req, res)
 
     console.log('Running API call')
-    
+
     const {
         query: {challenge} 
     } = req;
 
     const {body} = req;
 
-    
 
-    if (challenge.length !== 2 || req.method !== 'POST'){
+    if (challenge.length !== 1 || req.method !== 'GET'){
         res.json({status: 'ERROR', msg: "Incorrect message format"})
         console.error('Incorrect message format')
         return;
     }
 
-    // construct the data to be written to the database
-    const challengeSubmission = {
-        user: challenge[0],
-        challengeId: challenge[1],
-        time: moment().format('yyyy-mm-DD-hh:mm:ss-SSSS'),
-        ...body
-    }
-        
+    console.log("Looking for:", challenge[0])
 
     // check if the request is from a valid user.
     // log to a db.
@@ -52,11 +46,11 @@ export default async function handler(req, res) {
 
     const isConnected = await client.isConnected() // Returns true or false
 
-    const {result} = await db.collection('challenges')
-        .insertOne(challengeSubmission)
+    const result = await db.collection('challenges')
+        .findOne({})
       
 
-    console.log(moment().format('yyyy-mm-DD-hh:mm:ss-SSSS'), 'Result: ', result.ok)
-    res.json({status: result.ok === 1, msg: "Challenge Submitted"});
+    console.log(moment().format('yyyy-mm-DD-hh:mm:ss-SSSS'), 'Result: ', result)
+    res.json({status: result.ok === 1, msg: result});
 
 }
