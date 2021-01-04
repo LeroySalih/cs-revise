@@ -58,7 +58,7 @@ export default async function handler(req, res) {
     //const {result} = await db.collection('challenges')
     //    .insertOne(challengeSubmission)
       
-    const id = body.id;
+    const _id = body.id;
     const email = body.email;
     const results = JSON.parse(body.results);
     const successes = parseInt(body.successes);
@@ -67,7 +67,7 @@ export default async function handler(req, res) {
     const main = body.main
 
     const answerObj = {
-        id, email, results, successes, fails, progress, main, ts: moment().format('yyyy-mm-DD-hh:mm:ss-SSSS')
+        _id, email, results, successes, fails, progress, main, ts: moment().format('yyyy-mm-DD-hh:mm:ss-SSSS')
     };
 
     // check if the request is from a valid user.
