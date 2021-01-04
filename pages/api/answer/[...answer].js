@@ -58,7 +58,7 @@ export default async function handler(req, res) {
     const results = JSON.parse(body.results);
     const successes = parseInt(body.successes);
     const fails = parseInt(body.fails);
-    const progress = parseFloat(body.progerss);
+    const progress = parseFloat(body.progress);
     const main = body.main
 
     const answerObj = {
