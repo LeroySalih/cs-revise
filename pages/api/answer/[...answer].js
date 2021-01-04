@@ -26,6 +26,9 @@ export default async function handler(req, res) {
         query: {answer} 
     } = req;
 
+    const email = answer[0];
+    const id = answer[1];
+
     const {body} = req;
 
     
@@ -55,6 +58,8 @@ export default async function handler(req, res) {
     //const {result} = await db.collection('challenges')
     //    .insertOne(challengeSubmission)
       
+    const id = body.id;
+    const email = body.email;
     const results = JSON.parse(body.results);
     const successes = parseInt(body.successes);
     const fails = parseInt(body.fails);
@@ -62,7 +67,7 @@ export default async function handler(req, res) {
     const main = body.main
 
     const answerObj = {
-        results, successes, fails, progress, main
+        id, email, results, successes, fails, progress, main
     };
 
     console.log(moment().format('yyyy-mm-DD-hh:mm:ss-SSSS'), 'Answer Object: ', answerObj)
