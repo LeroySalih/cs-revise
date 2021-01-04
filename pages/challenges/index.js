@@ -20,9 +20,7 @@ print("Hello World")`
 
   return <div className="container">
           <h1>This is the Challenges Index Page</h1>
-          <Button variant="contained" color="primary" onClick={handleSendApiCall}>
-              Test
-          </Button>
+          <a href="https://gitpod.io/#CHALLENGE_ID=1">Link to Challenge 1</a>
           <pre>{JSON.stringify(msg, null, 2)}</pre>
         </div>
 }
