@@ -26,8 +26,8 @@ export default async function handler(req, res) {
         query: {answer} 
     } = req;
 
-    const email = answer[0];
-    const id = answer[1];
+    // const email = answer[0];
+    // const id = answer[1];
 
     const {body} = req;
 
