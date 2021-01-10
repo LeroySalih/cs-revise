@@ -9,39 +9,43 @@ class Introduction {
 
   questions = [
     {
-      text: 'What is the name for a computer that is not linked to another computer?',
-      answers : [
-        {text: 'Stand alone', isCorrect: true},
-        {text: 'Un-networked', isCorrect: false},
-        {text: 'Non linked', isCorrect: false},
-        {text: 'Isolated', isCorrect: false},
+      "type": "multi-choice",
+      "text": "What is the name for a computer that is not linked to another computer?",
+      "answers" : [
+        {"text": "Stand alone", "isCorrect" : "true"},
+        {"text": "Un-networked", "isCorrect" : "false"},
+        {"text": "Non linked", "isCorrect" : "false"},
+        {"text": "Isolated", "isCorrect" : "false"}
       ]
     },
     {
-      text: 'What is the name for the connection between 2 or more computers?',
-      answers : [
-        {text: 'Wire', isCorrect: false},
-        {text: 'Network', isCorrect: false},
-        {text: 'Links', isCorrect: true},
-        {text: 'Web', isCorrect: false},
+      "type": "multi-choice",
+      "text": "What is the name for the connection between 2 or more computers?",
+      "answers" : [
+        {"text": "Wire", "isCorrect" : "false"},
+        {"text": "Network", "isCorrect" : "false"},
+        {"text": "Links", "isCorrect" : "true"},
+        {"text": "Web", "isCorrect" : "false"}
+      ]
+    },
+    { 
+      "type": "multi-choice",
+      "text": "What is the role of the Switch?",
+      "answers" : [
+        {"text": "Connects devices creating a WAN", "isCorrect" : "false"},
+        {"text": "Connects devices to the WWW", "isCorrect" : "false"},
+        {"text": "Connects devices to the ETHERNET", "isCorrect" : "false"},
+        {"text": "Connects devices creating a LAN", "isCorrect" : "true"}
       ]
     },
     {
-      text: 'What is the role of the Switch?',
-      answers : [
-        {text: 'Connects devices creating a WAN', isCorrect: false},
-        {text: 'Connects devices to the WWW', isCorrect: false},
-        {text: 'Connects devices to the ETHERNET', isCorrect: false},
-        {text: 'Connects devices creating a LAN', isCorrect: true},
-      ]
-    },
-    {
-      text: 'A network that has multiple owners and spans a wide geographic area is probably a:',
-      answers : [
-        {text: 'WAN', isCorrect: true},
-        {text: 'WWW', isCorrect: false},
-        {text: 'ETHERNET', isCorrect: false},
-        {text: 'LAN', isCorrect: false},
+      "type": "multi-choice",
+      "text": "A network that has multiple owners and spans a wide geographic area is probably a:",
+      "answers" : [
+        {"text": "WAN", "isCorrect" : "true"},
+        {"text": "WWW", "isCorrect" : "false"},
+        {"text": "ETHERNET", "isCorrect" : "false"},
+        {"text": "LAN", "isCorrect" : "false"}
       ]
     }
   ]
@@ -52,7 +56,7 @@ class Introduction {
 
   getQuestionText (){ 
     return  this.question.text;
-  }
+    }
 
   getAnswers() {
     return this.question.answers;

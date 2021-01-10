@@ -1,7 +1,21 @@
+import {QuestionContext} from '../../components/question';
+import {useContext} from 'react';
 import Video from './video';
 import Question from '../question'
 
 const Task = ({task}) => {
+
+  const {questions} = useContext(QuestionContext);
+
+  const getQuestion = (task) => {
+    const questionKey = task.questionKey;
+    const module = questionKey.split("::")[0]
+    const topic = questionKey.split("::")[1]
+    const id = parseInt(questionKey.split("::")[2])
+
+    
+    return questions[topic][id]
+  }
   
   if (!task)
     return (<></>);
@@ -11,7 +25,7 @@ const Task = ({task}) => {
 
   if (task.type === 'question')
     return (<div className="question">
-              <Question type={task.questionKey} />
+              <Question  questionKey={task.questionKey} question={getQuestion(task)}/>
             <style jsx>{`
               .question {
                 background-color: #0000f020;

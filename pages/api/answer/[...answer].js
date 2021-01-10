@@ -26,62 +26,39 @@ export default async function handler(req, res) {
         query: {answer}  
     } = req;
 
-    // const email = answer[0];
-    // const id = answer[1];
+    console.log(answer)
 
-    const {body} = req;
-
-    
-
-    //if (challenge.length !== 2 || req.method !== 'POST'){
-    //    res.json({status: 'ERROR', msg: "Incorrect message format"})
-    //    console.error('Incorrect message format')
-    //    return;
-    //}
-
-    // construct the data to be written to the database
-    //const challengeSubmission = {
-    //    user: challenge[0],
-    //    challengeId: challenge[1],
-    //    time: moment().format('yyyy-mm-DD-hh:mm:ss-SSSS'),
-    //    ...body
-    // }
-        
-
-    // check if the request is from a valid user.
-    // log to a db.
-
-    // const { client, db } = await connectToDatabase()
-
-    // const isConnected = await client.isConnected() // Returns true or false
-
-    //const {result} = await db.collection('challenges')
-    //    .insertOne(challengeSubmission)
-      
-    const challengeId = body.id; 
-    const email = body.email;
-    const results = JSON.parse(body.results);
-    const successes = parseInt(body.successes);
-    const fails = parseInt(body.fails);
-    const progress = parseFloat(body.progress);
-    const main = body.main
-
-    const answerObj = {
-      challengeId, email, results, successes, fails, progress, main, ts: moment().format('yyyy-mm-DD-hh:mm:ss-SSSS')
-    };
-
-    // check if the request is from a valid user.
-    // log to a db.
+    const [email, questionKey, index, result] = answer;
 
     const { client, db } = await connectToDatabase()
 
     const isConnected = await client.isConnected() // Returns true or false
 
     // add to database
-    const result = await db.collection('answers')
-                            .updateOne({_id: email}, {$push : {[challengeId] : answerObj}}, {upsert: true});
+    const data = await db.collection('answers')
+                              .insertOne({email, questionKey, index, result, createdOn: moment().format("YYYY-MM-DD HH-mm-s-SSS")});
+
+    const update = await db.collection('answers')
+                              .find({
+                                email: email, 
+                                questionKey: questionKey,
+                                index: index
+                              }).toArray();
+
+    
+    const correct = update.reduce((acc, curr) => { 
+        if (curr.result == 'true'){
+          acc += 1
+        }
+        
+        return acc;
+      }, 
+    0
+    );
+    
+    console.log('Correct', correct);
 
     // console.log(answerObj.ts, 'Answer Object: ', answerObj, result)
-    res.json({status: result.ok === 1, msg: "Answer Submitted"});
+    res.json({status: true, msg: "Answer Submitted", count: update.length, correct});
 
 }

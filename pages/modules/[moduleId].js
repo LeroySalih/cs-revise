@@ -4,16 +4,20 @@ import Head from 'next/head';
 import Link from 'next/link';
 import { lazy } from 'react';
 
+import {QuestionContext} from '../../components/question';
+
+
 import Task from '../../components/task';
 import Question from '../../components/question';
 
-const ModulePage = ({module}) => {
+const ModulePage = ({module, questions}) => {
+
+  
   if (!module)
     return `<div>No Module Found</div>`
 
-  
-  
   return (
+    <QuestionContext.Provider value={{questions}}>
     <div className="container">
       <Head>
         <title>{module && module.title}</title>
@@ -107,6 +111,7 @@ const ModulePage = ({module}) => {
       `}</style>
 
     </div>
+    </QuestionContext.Provider>
     )
 }
 
@@ -119,9 +124,11 @@ export async function getStaticProps (context) {
 
   const module = await db.collection('modules').findOne({_id: moduleId});
 
+  const questions = await db.collection('questions').findOne({_id: moduleId});
+
   return {
     props: {
-      module: module
+      module, questions
     }
   }
 }

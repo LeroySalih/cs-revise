@@ -12,7 +12,7 @@ const NavBar = () => {
   
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
-  const DEV = false;
+  const DEV = true;
 
   const handleLogin = (loginType) => {
     

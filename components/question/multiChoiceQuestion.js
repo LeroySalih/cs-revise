@@ -1,5 +1,6 @@
 import {useState, useEffect, useRef } from 'react';
 import Button from '@material-ui/core/Button';
+import { useMsalAuthentication, useMsal, useAccount, AuthenticatedTemplate, UnauthenticatedTemplate } from "@azure/msal-react";
 
 const multiChoiceQuestion = (questionType) => {
 
@@ -9,6 +10,10 @@ const multiChoiceQuestion = (questionType) => {
   const [answer, setAnswer] = useState('');
   const [question, setQuestion] = useState('');
   
+  const {instance, accounts} = useMsal();
+
+  const email = accounts && accounts[0] && accounts[0].username;
+
   useEffect(()=> {
     setQuestion(questionType)
   }, [])
@@ -17,9 +22,20 @@ const multiChoiceQuestion = (questionType) => {
     setCorrect(null);
   }
 
+  const notifyServer = (msg) => {
+    console.log(msg);
+  }
+
   const handleCheck = (index) => {
     // check the answer
     const result = question.checkAnswer(index);
+
+    const serverMessage = {
+      email, question, answer: index, result
+    }
+
+    notifyServer (serverMessage)
+
 
     setAnswer(index);
 
