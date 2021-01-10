@@ -8,22 +8,31 @@ const Task = ({task}) => {
   const {questions} = useContext(QuestionContext);
 
   const getQuestion = (task) => {
-    const questionKey = task.questionKey;
-    const module = questionKey.split("::")[0]
-    const topic = questionKey.split("::")[1]
-    const id = parseInt(questionKey.split("::")[2])
+    try{
+      const questionKey = task.type =='question' && task.questionKey;
+      const module = questionKey.split("::")[0]
+      const topic = questionKey.split("::")[1]
+      const id = parseInt(questionKey.split("::")[2])
 
     
-    return questions[topic][id]
+      return questions[topic][id]
+
+    } catch (err) {
+      console.error("Error:", err.message, task)
+      return null;
+    }
+    
   }
+
+  const question = task.type == 'question' && getQuestion(task)
   
   if (!task)
-    return (<></>);
+    return (<>Invalid Task or Question <pre>{task && JSON.stringify(task, null, 2)}</pre></>);
 
   if (task.type === 'video')
     return <Video task={task}/>
 
-  if (task.type === 'question')
+  if (task.type === 'question'  && question)
     return (<div className="question">
               <Question  questionKey={task.questionKey} question={getQuestion(task)}/>
             <style jsx>{`

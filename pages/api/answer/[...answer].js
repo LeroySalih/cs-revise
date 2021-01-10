@@ -26,7 +26,7 @@ export default async function handler(req, res) {
         query: {answer}  
     } = req;
 
-    console.log(answer)
+    // console.log(answer)
 
     const [email, questionKey, index, result] = answer;
 
@@ -42,21 +42,18 @@ export default async function handler(req, res) {
                               .find({
                                 email: email, 
                                 questionKey: questionKey,
-                                index: index
+                                
                               }).toArray();
 
     
-    const correct = update.reduce((acc, curr) => { 
-        if (curr.result == 'true'){
-          acc += 1
-        }
-        
-        return acc;
-      }, 
-    0
-    );
+    const correct = update.reduce((acc, curr) => {
+      if (curr.result == 'true') {
+        acc += 1
+      }
+      return acc;
+    }, 0)
     
-    console.log('Correct', correct);
+    // console.log('Correct', update.length, correct);
 
     // console.log(answerObj.ts, 'Answer Object: ', answerObj, result)
     res.json({status: true, msg: "Answer Submitted", count: update.length, correct});
