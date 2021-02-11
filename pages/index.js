@@ -4,6 +4,7 @@ import Link from 'next/link';
 import {connectToDatabase} from '../utils/mongodb';
 import { AuthenticatedTemplate, UnauthenticatedTemplate } from "@azure/msal-react";
 
+
 export default function Home({data}) {
   
   return (
@@ -28,7 +29,7 @@ export default function Home({data}) {
         </h1>
 
         <p className={styles.description}>
-          Get started by visiting a topic below.{' '}
+          Get started by visiting a topic below.{' '}<img src='/images/tick.svg' alt="next"/>
         </p>
 
         <div className={styles.grid}>
