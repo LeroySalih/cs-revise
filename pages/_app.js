@@ -5,10 +5,15 @@ import { MsalProvider } from "@azure/msal-react";
 import { PublicClientApplication } from "@azure/msal-browser";
 import { msalConfig } from "../src/authConfig";
 
+import {IdentityContext} from '../src/context/identity';
+import {useState} from 'react';
+
 // https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/samples/msal-react-samples/nextjs-sample/src
 
 function MyApp({ Component, pageProps }) {
   const msalInstance = new PublicClientApplication(msalConfig);
+
+  const [identity, setIdentity] = useState(null);
 
   useEffect(() => {
     // Remove the server-side injected CSS.
@@ -20,10 +25,12 @@ function MyApp({ Component, pageProps }) {
 
   return ( 
     <> 
-    <MsalProvider instance={msalInstance}>
-      <Navbar/>
-      <Component {...pageProps} /> 
-      </MsalProvider>
+      <IdentityContext.Provider value={{identity, setIdentity}}>
+        <MsalProvider instance={msalInstance}>
+          <Navbar/>
+          <Component {...pageProps} /> 
+        </MsalProvider>
+      </IdentityContext.Provider>
     </>
   )
 }

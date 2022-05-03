@@ -4,9 +4,15 @@ import Link from 'next/link';
 import {connectToDatabase} from '../utils/mongodb';
 import { AuthenticatedTemplate, UnauthenticatedTemplate } from "@azure/msal-react";
 
-
+import {IdentityContext} from "../src/context/identity";
+import {useContext} from 'react'
 export default function Home({data}) {
   
+  const {identity, setIdentity} = useContext(IdentityContext);
+
+  const handleUpdateIdentity = () => {
+    setIdentity({name:"New User!"})
+  }
   return (
     <div className={styles.container}>
       <Head>
@@ -16,17 +22,13 @@ export default function Home({data}) {
 
       <main className={styles.main}>
 
-          <AuthenticatedTemplate>
-              <Link variant="contained" color="primary" href="/profile">Request Profile Information</Link>
-          </AuthenticatedTemplate>
-
-          <UnauthenticatedTemplate>
-              <center></center>
-          </UnauthenticatedTemplate>
-
         <h1 className={styles.title}>
-          Welcome to CS Revise 💻
+          Welcome to CS Revise {identity && identity.name}💻
         </h1>
+        
+        <div>
+          <button onClick={handleUpdateIdentity}></button>
+        </div>
 
         <p className={styles.description}>
           Get started by visiting a topic below.{' '}<img src='/images/tick.svg' alt="next"/>

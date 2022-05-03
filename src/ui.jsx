@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import { makeStyles } from '@material-ui/core/styles';
-import { useIsAuthenticated, useMsal } from "@azure/msal-react";
+import { useIsAuthenticated, useMsal, useAccount } from "@azure/msal-react";
 import { loginRequest } from "../src/authConfig";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
@@ -71,45 +71,7 @@ export const SignInButton = () => {
     )
 };
 
-export const SignOutButton = () => {
-    const { instance } = useMsal();
 
-    const [anchorEl, setAnchorEl] = React.useState(null);
-    const open = Boolean(anchorEl);
-
-    const handleLogout = () => {
-        setAnchorEl(null);
-        instance.logout();
-    }
-
-    return (
-        <div>
-            <IconButton
-                onClick={(event) => setAnchorEl(event.currentTarget)}
-                color="inherit"
-            >
-                <AccountCircle />
-            </IconButton>
-            <Menu
-                id="menu-appbar"
-                anchorEl={anchorEl}
-                anchorOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
-                }}
-                keepMounted
-                transformOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
-                }}
-                open={open}
-                onClose={() => setAnchorEl(null)}
-            >
-                <MenuItem onClick={handleLogout}>Logout</MenuItem>
-            </Menu>
-        </div>
-    )
-};
 
 const SignInSignOutButton = () => {
     const isAuthenticated = useIsAuthenticated();

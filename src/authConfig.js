@@ -1,9 +1,9 @@
 // Config object to be passed to Msal on creation
 export const msalConfig = {
     auth: {
-        clientId: "5cd3bb3b-4b41-4e05-9e7a-71996c4032a7",
-        redirectUri: "http://localhost:3000",
-        postLogoutRedirectUri: "http://localhost:3000"
+        clientId: "882e3a11-c570-4809-b45d-7f3256e88259",
+        redirectUri: "https://3000-leroysalih-csrevise-6py5i5qnn61.ws-eu43.gitpod.io/",
+        postLogoutRedirectUri: "https://3000-leroysalih-csrevise-6py5i5qnn61.ws-eu43.gitpod.io/"
     }
 };
 
