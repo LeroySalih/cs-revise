@@ -12,8 +12,8 @@ const ChallengesIndex =  () => {
 
   const { instance, accounts } = useMsal();
 
-  const {username} = accounts[0]
-  console.log(instance, accounts && accounts[0])
+  // const {username} = accounts[0]
+  // console.log(instance, accounts && accounts[0])
 
   useEffect(async ()=> {
     const res = await axios.get('/api/challenges');
@@ -23,10 +23,10 @@ const ChallengesIndex =  () => {
   
 
   return <div className="container">
-          <h1>This is the Challenges Index Page for {username}</h1>
+          <h1>This is the Challenges Index Page </h1>
           
           {challenges && challenges.map((c, i) => (<div>
-            <a key={i} href={`https://gitpod.io/#EMAIL=${username},CHALLENGE_ID=${c._id},CHALLENGE_TITLE=${c.title},EMAIL=sleroy@bisak.org/https://github.com/LeroySalih/python-base`}>{c.title}</a>
+            <a key={i} href={`https://gitpod.io/#EMAIL=,CHALLENGE_ID=${c._id},CHALLENGE_TITLE=${c.title},EMAIL=sleroy@bisak.org/https://github.com/LeroySalih/python-base`}>{c.title}</a>
             <div>{c.desc}</div>
           </div>) )}
         </div>
