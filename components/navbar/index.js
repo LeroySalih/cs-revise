@@ -75,7 +75,8 @@ const NavBar = () => {
   return (
     <>
     
-    <AppBar position="static">
+    
+    <AppBar position="sticky">
         <Toolbar>
           <IconButton
             size="medium"
@@ -86,6 +87,7 @@ const NavBar = () => {
           >
             <MenuIcon />
           </IconButton>
+          <img src="/images/mr-salih-logo.png" id="logo"></img>
           <div className="appBarTitle" variant="h6" component="div">
             mrsalih.co.uk
           </div>
@@ -121,6 +123,12 @@ const NavBar = () => {
           font-family: 'Poppins', sans-serif;
           font-size: 1.7rem;
           font-weight: bold;
+        }
+
+        #logo {
+          width : 50px;
+          height: 50px;
+          margin-right: 1rem;
         }
 
         

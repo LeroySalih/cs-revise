@@ -3,11 +3,14 @@ import styles from '../styles/Home.module.css'
 import Link from 'next/link';
 import {connectToDatabase} from '../utils/mongodb';
 import { AuthenticatedTemplate, UnauthenticatedTemplate } from "@azure/msal-react";
+import Button from '@material-ui/core/Button';
 
 import {IdentityContext} from "../src/context/identity";
 import {useContext} from 'react'
 export default function Home({data}) {
-  
+
+  console.log(data);
+
   const {identity, setIdentity} = useContext(IdentityContext);
 
   const handleUpdateIdentity = () => {
@@ -16,44 +19,60 @@ export default function Home({data}) {
   return (
     <div className={styles.container}>
       <Head>
-        <title>CS Revise</title>
-        <link rel="icon" href="/favicon.ico" />
+        <title>Revise Computer Science :: mrsalih.co.uk</title>
+        <link rel="icon" href="/images/mr-salih-logo.ico" />
       </Head>
 
       <main className={styles.main}>
 
         <h1 className={styles.title}>
-          Welcome to CS Revise {identity && identity.name}💻
+          Computer Science Revision {identity && identity.name}💻
         </h1>
-        
-        <div>
-          <button onClick={handleUpdateIdentity}></button>
-        </div>
-
+  
         <p className={styles.description}>
-          Get started by visiting a topic below.{' '}<img src='/images/tick.svg' alt="next"/>
+          Get started by visiting a topic below.{' '}
         </p>
 
         <div className={styles.grid}>
-          {data && data.map((t, i) => (
-            <Link className="heading-link" key={i} href={`/modules/${t._id}`} > 
-              <div className={styles.card}>
-              <h3>{t.title} &rarr;</h3>
-              <div dangerouslySetInnerHTML={{__html: t.description}}></div>
-              </div>
-            </Link>
-          ))}
+        {data && data.map((t, i) => (
+            
+            <div  className={styles.card}>
+              <Link className="heading-link"  href={`/modules/${t._id}`} >   
+                <h3>{t.title} &rarr;</h3> 
+              </Link>
+            
+                 
+                {t.headerImg && (
+                  <Link className="heading-link"  href={`/modules/${t._id}`} >
+                    <img className="headerImg" src={`/images/${t.headerImg}`} alt={t.description}></img>
+                  </Link>
+                )
+                }
+
+                <div style={{display:'none'}} dangerouslySetInnerHTML={{__html: t.description}}></div>
+
+                <Link className="heading-link"  href={`/modules/${t._id}`} >
+                  <Button variant="contained">Revise</Button>
+                </Link>
+
+            </div>
+          
+                      ))}
 
         </div>
       </main>
 
       <footer className={styles.footer}>
-        <div>mr-salih.co.uk</div>
-        <div>Clientid: {process.env.NEXT_PUBLIC_GOOGLE_CLIENT_KEY}</div>
+        <div>mrsalih.co.uk</div>
       </footer>
       <style jsx>{`
-        heading-link {
+        .heading-link {
           cursor: pointer;
+        }
+
+        .headerImg{
+          width: 300px;
+          height: 190px;
         }
       `}
       </style>
@@ -63,10 +82,6 @@ export default function Home({data}) {
 
 export async function getStaticProps (context) {
 
-  
-  const {NEXT_PUBLIC_GOOGLE_CLIENT_KEY} = process.env;
-
-  console.log("Google Key", NEXT_PUBLIC_GOOGLE_CLIENT_KEY)
   const { client, db } = await connectToDatabase()
 
   const isConnected = await client.isConnected() // Returns true or false
@@ -79,6 +94,7 @@ export async function getStaticProps (context) {
       title: 1, 
       metaDescription: 1, 
       order: 1, 
+      headerImg: 1,
       description: 1})
       .toArray();
 
