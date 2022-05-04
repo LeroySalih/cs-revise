@@ -12,6 +12,10 @@ import { GoogleLogin, GoogleLogout, useGoogleLogout } from 'react-google-login';
 import { IdentityContext } from "../../src/context/identity";
 import { useContext, useState, useEffect} from 'react'; 
 
+
+import { AppBar, Box, Toolbar, Typography, Button, IconButton,  } from "@material-ui/core";
+import MenuIcon from '@material-ui/icons/Menu';
+
 // mrsalih on google platform
 const GOOGLE_CLIENT_ID = process.env.NEXT_PUBLIC_GOOGLE_CLIENT_KEY
 
@@ -69,59 +73,61 @@ const NavBar = () => {
   }
 
   return (
-    <div className="navbar">
-      <div className="siteHeading">
-        <Link href="/">CS Revise</Link>
-      </div>
-      <div className="userOPtions">
-        
-        {identity && identity.provider == 'google' && (
+    <>
+    
+    <AppBar position="static">
+        <Toolbar>
+          <IconButton
+            size="medium"
+            edge="start"
+            color="inherit"
+            aria-label="menu"
+            sx={{ mr: 2 }}
+          >
+            <MenuIcon />
+          </IconButton>
+          <div className="appBarTitle" variant="h6" component="div">
+            mrsalih.co.uk
+          </div>
+          {identity && identity.provider == 'google' && (
 
           <GoogleLogout
-          clientId={GOOGLE_CLIENT_ID}
-          buttonText="Sign Out"
-          onLogoutSuccess={handleGoogleSignOut}
+            clientId={GOOGLE_CLIENT_ID}
+            buttonText="Sign Out"
+            onLogoutSuccess={handleGoogleSignOut}
           >
           </GoogleLogout>
-        )}
-        
-        { !identity && <div>
-          
+          )}
+
+          {!identity && 
+
           <GoogleLogin
           //mrsalih project on google platform
-          clientId={GOOGLE_CLIENT_ID}
-          buttonText="Login"
-          onSuccess={handleGoogleSignInOK}
-          onFailure={handleGoogleSignInFailed}
-          cookiePolicy={'single_host_origin'}
-        />  
-        </div>
-        }
-        
-      </div>
-      
-      
-      
+            clientId={GOOGLE_CLIENT_ID}
+            buttonText="Login"
+            onSuccess={handleGoogleSignInOK}
+            onFailure={handleGoogleSignInFailed}
+            cookiePolicy={'single_host_origin'}
+          />  
+
+          }
+        </Toolbar>
+      </AppBar>
       <style jsx>{`
 
-        .navbar {
+        .appBarTitle{
           display: flex;
-          background-color: silver;
-          align-items: center;
-          height: 4rem;
+          flex-grow: 1;
+          font-family: 'Poppins', sans-serif;
+          font-size: 1.7rem;
+          font-weight: bold;
         }
 
-        .siteHeading {
-          flex:1;
-          margin-left: 2rem;
-        }
-
-        .userOptions {
-
-        }
+        
       
       `}</style>
-    </div>
+    </>
+
   )
 }
 
