@@ -2,8 +2,8 @@
 export const msalConfig = {
     auth: {
         clientId: "882e3a11-c570-4809-b45d-7f3256e88259",
-        redirectUri: "https://3000-leroysalih-csrevise-vjalcrw6hd7.ws-eu43.gitpod.io/",
-        postLogoutRedirectUri: "https://3000-leroysalih-csrevise-vjalcrw6hd7.ws-eu43.gitpod.io/"
+        redirectUri: "",
+        postLogoutRedirectUri: ""
     }
 };
 
