@@ -5,14 +5,24 @@ import Link from 'next/link';
 import { lazy } from 'react';
 
 import {QuestionContext} from '../../components/question';
+import Lesson from '../../components/lesson';
 
 
-import Task from '../../components/task';
 import Question from '../../components/question';
+
+import { useIntersection } from '../../hooks/useIntersection';
+import {useState} from 'react';
+import { SettingsInputSvideo } from '@material-ui/icons';
 
 const ModulePage = ({module, questions}) => {
 
-  
+  const [visible, setVisible] = useState(null);
+
+  const handleIsVisibleChange = (title, v) => {
+    if (v){
+      setVisible(title);
+    }
+  }  
   if (!module)
     return `<div>No Module Found</div>`
 
@@ -34,7 +44,7 @@ const ModulePage = ({module, questions}) => {
         <div className="sideBar">
           {module && Object.values(module.lessons).map((l, i) => (
             <div key={i} className="sideMenuItem">
-              <a href={`#${l._id}`}>{l.title}</a>
+              <a href={`#${l._id}`} className={`${l.title == visible ? 'visible' : ''}`}>{l.title}</a>
             </div>
           )
           )}
@@ -42,26 +52,18 @@ const ModulePage = ({module, questions}) => {
         <div className="mainPage">
           {
             module && Object.values(module.lessons).map((l, i) => (
-              <div key={i}>
-                <a name={l._id}></a>
-                <h2><img src="/images/youtube.png" width="2rem" />{l.title}</h2> 
-                <div>{l.desc}</div>
-                <div className="linksToSpec">
-                  <h3>Links to Spec</h3>
-                  <div dangerouslySetInnerHTML={{__html: l.specDesc}}></div>
-                </div>
-                <div>{l.tasks && Object.values(l.tasks).map((t, ti) => (
-                  <div key={ti}>
-                    <Task task={t}></Task>
-                  </div>
-                )) 
-                }</div>
-              </div>
+              <Lesson key={i} lesson={l} onIsVisible={handleIsVisibleChange}/>
             ))
           }
         </div>
       </div>
       <style jsx>{`
+
+          .visible {
+            color: red;
+            font-weight: bold;
+            text-decoration: underline;
+          }
 
         .offSiteLink {
           color: blue;
@@ -82,9 +84,8 @@ const ModulePage = ({module, questions}) => {
         }
 
         .sideBar {
-          background-color: #fafafa;
-          border: 1px solid silver;
-          border-radius: 10px;
+          
+          border-right: 2px dotted silver;
           margin-top: 15px;
 
         }
@@ -95,13 +96,7 @@ const ModulePage = ({module, questions}) => {
           scroll-behavior: smooth;
         }
 
-        .linksToSpec {
-          background-color: #f0f0f0;
-          padding: 10px;
-          margin: 10px;
-          border: silver 1px solid;
-          border-radius: 5px;
-        }
+        
 
         .sideMenuItem {
           padding: 10px;
