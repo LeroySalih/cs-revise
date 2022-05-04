@@ -13,9 +13,10 @@ import { IdentityContext } from "../../src/context/identity";
 import { useContext, useState, useEffect} from 'react'; 
 
 // mrsalih on google platform
-const GOOGLE_CLIENT_ID = "1050329809560-sp3v3igpnggsf7aqm7a7ok04l44u1l3c.apps.googleusercontent.com"
+const GOOGLE_CLIENT_ID = process.env.NEXT_PUBLIC_GOOGLE_CLIENT_KEY
 
 const NavBar = () => {    
+  console.log("Google Client Id", process.env.NEXT_PUBLIC_GOOGLE_CLIENT_KEY)
   const { instance, accounts } = useMsal();
   
   const {identity, setIdentity} = useContext(IdentityContext);

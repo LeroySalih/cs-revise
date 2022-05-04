@@ -48,7 +48,8 @@ export default function Home({data}) {
       </main>
 
       <footer className={styles.footer}>
-        <div>mr-salih</div>
+        <div>mr-salih.co.uk</div>
+        <div>Clientid: {process.env.NEXT_PUBLIC_GOOGLE_CLIENT_KEY}</div>
       </footer>
       <style jsx>{`
         heading-link {
@@ -62,6 +63,10 @@ export default function Home({data}) {
 
 export async function getStaticProps (context) {
 
+  
+  const {NEXT_PUBLIC_GOOGLE_CLIENT_KEY} = process.env;
+
+  console.log("Google Key", NEXT_PUBLIC_GOOGLE_CLIENT_KEY)
   const { client, db } = await connectToDatabase()
 
   const isConnected = await client.isConnected() // Returns true or false
@@ -84,3 +89,6 @@ export async function getStaticProps (context) {
   }
 
 }
+
+
+
