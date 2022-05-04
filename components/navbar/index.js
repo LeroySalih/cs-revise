@@ -19,6 +19,12 @@ import MenuIcon from '@material-ui/icons/Menu';
 // mrsalih on google platform
 const GOOGLE_CLIENT_ID = process.env.NEXT_PUBLIC_GOOGLE_CLIENT_KEY
 
+
+const useIdentity = () => {
+
+}
+
+
 const NavBar = () => {    
   console.log("Google Client Id", process.env.NEXT_PUBLIC_GOOGLE_CLIENT_KEY)
   const { instance, accounts } = useMsal();
