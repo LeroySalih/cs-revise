@@ -9,7 +9,7 @@ import {IdentityContext} from "../src/context/identity";
 import {useContext} from 'react'
 export default function Home({data}) {
 
-  console.log(data);
+  
 
   const {identity, setIdentity} = useContext(IdentityContext);
 
@@ -36,16 +36,16 @@ export default function Home({data}) {
         <div className={styles.grid}>
         {data && data.map((t, i) => (
             
-            <div  className={styles.card}>
+            <div  key={i} className={styles.card}>
               <Link className="heading-link"  href={`/modules/${t._id}`} >   
                 <h3>{t.title} &rarr;</h3> 
               </Link>
             
                  
                 {t.headerImg && (
-                  <Link className="heading-link"  href={`/modules/${t._id}`} >
-                    <img className="headerImg" src={`/images/${t.headerImg}`} alt={t.description}></img>
-                  </Link>
+                  
+                    <img className="headerImg" src={`/images/${t.headerImg}`} ></img>
+                  
                 )
                 }
 

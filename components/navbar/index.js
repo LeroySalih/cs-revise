@@ -14,23 +14,20 @@ import { useContext, useState, useEffect} from 'react';
 
 
 import { AppBar, Box, Toolbar, Typography, Button, IconButton,  } from "@material-ui/core";
+import Avatar from '@material-ui/core/Avatar';
+
 import MenuIcon from '@material-ui/icons/Menu';
+
 
 // mrsalih on google platform
 const GOOGLE_CLIENT_ID = process.env.NEXT_PUBLIC_GOOGLE_CLIENT_KEY
 
-
-const useIdentity = () => {
-
-}
-
-
 const NavBar = () => {    
-  console.log("Google Client Id", process.env.NEXT_PUBLIC_GOOGLE_CLIENT_KEY)
+  // console.log("Google Client Id", process.env.NEXT_PUBLIC_GOOGLE_CLIENT_KEY)
   const { instance, accounts } = useMsal();
   
   const {identity, setIdentity} = useContext(IdentityContext);
-  const account = useAccount(accounts[0] || {});
+  // const account = useAccount(accounts[0] || {});
   
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
@@ -40,27 +37,37 @@ const NavBar = () => {
     clientId: GOOGLE_CLIENT_ID
   })
 
-  const handleLogin = (loginType) => {
+  const handleLogin = () => {
     
-    setAnchorEl(null);
-
-    instance.loginPopup(loginRequest);
-    if (loginType === "popup") {
-        instance.loginPopup(loginRequest);
-    } else if (loginType === "redirect") {
-        instance.loginRedirect(loginRequest);
-    }
+    
+    
   }
 
   const handleLogout = () => {
     instance.logout();
   }
 
-  // if MS Accoutn changes
   useEffect(() => {
+    console.log("instance", instance);
+    console.log("accounts", accounts);
+    console.log("identity", identity);
 
-  }, [account])
+    if (accounts && accounts.length){
+      
+      const account = accounts[0];
 
+      if (!identity || (identity.email !== account.email && identity.provider !== 'ms')){
+        setIdentity({
+          name: account.name,
+          email: account.username,
+          provider: "ms"
+        });
+      }
+      
+    }
+  }, [accounts])
+
+  
   const handleGoogleSignInOK = (o) => {
     console.log("Google Sign In Received", o);
     setIdentity({
@@ -75,6 +82,31 @@ const NavBar = () => {
 
   const handleGoogleSignOut = (o) => {
     console.log("Google Signed Out", o);
+    setIdentity(null);
+  }
+
+  const handleMicrosoftSignIn = async () => {
+    setAnchorEl(null);
+
+    const result = await instance.loginRedirect(loginRequest);
+
+    if (result && result.account) {
+      setIdentity(
+        {
+          name: result.account.name,
+          email: result.account.username,
+          provider: "ms"
+        }
+      )
+    }
+    console.log("MS Login Recieved:", result.account);
+  }
+
+  const handleMicrosoftSignOut = async () => {
+    setAnchorEl(null);
+
+    await instance.logout();
+
     setIdentity(null);
   }
 
@@ -99,16 +131,23 @@ const NavBar = () => {
           </div>
           {identity && identity.provider == 'google' && (
 
-          <GoogleLogout
-            clientId={GOOGLE_CLIENT_ID}
-            buttonText="Sign Out"
-            onLogoutSuccess={handleGoogleSignOut}
-          >
-          </GoogleLogout>
+            <GoogleLogout
+              clientId={GOOGLE_CLIENT_ID}
+              buttonText="Sign Out"
+              onLogoutSuccess={handleGoogleSignOut}
+            >
+            </GoogleLogout>
+          )}
+
+          {identity && identity.provider == 'ms' && (
+
+          <Button variant="outlined" startIcon={<Avatar src="/images/ms-logo.png"/>} onClick={handleMicrosoftSignOut}>
+          Sign out with Microsoft
+          </Button>
           )}
 
           {!identity && 
-
+          <>
           <GoogleLogin
           //mrsalih project on google platform
             clientId={GOOGLE_CLIENT_ID}
@@ -118,6 +157,10 @@ const NavBar = () => {
             cookiePolicy={'single_host_origin'}
           />  
 
+          <Button variant="outlined" startIcon={<Avatar src="/images/ms-logo.png"/>} onClick={handleMicrosoftSignIn}>
+            Sign in with Microsoft
+          </Button>
+          </>
           }
         </Toolbar>
       </AppBar>
