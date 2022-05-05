@@ -108,7 +108,7 @@ const ModulePage = ({module, questions}) => {
             </div>
           )
           )}
-          <DisplaySession session={session} />
+          
           <Button onClick={handleClearSession}>Clear Answers</Button>
         </div>
 
