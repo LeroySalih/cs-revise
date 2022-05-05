@@ -2,7 +2,7 @@ import {connectToDatabase} from '../../utils/mongodb';
 
 import Head from 'next/head';
 import Link from 'next/link';
-import { lazy } from 'react';
+import { lazy, useContext } from 'react';
 
 import {QuestionContext} from '../../components/question';
 import Lesson from '../../components/lesson';
@@ -15,20 +15,23 @@ import {useState, useEffect} from 'react';
 import { SettingsInputSvideo } from '@material-ui/icons';
 import DisplaySession  from '../../components/display-session';
 import Button from '@mui/material/Button';
+import { IdentityContext } from '../../src/context/identity';
 
 const ModulePage = ({module, questions}) => {
 
   const [visible, setVisible] = useState(null);
   const [session, setSession] = useState(null);
+  const [answers, setAnswers] = useState(0);
+  const {identity} =useContext(IdentityContext);
 
+
+  
   useEffect(()=> {
     console.log("Questions changed")
     setSession(createSession(questions))
   }, [questions]);
 
-  useEffect(()=> {
-    console.log('Session Change Detected', session);
-  }, [session])
+  
 
   const createSession = (q) => {
     
@@ -81,11 +84,34 @@ const ModulePage = ({module, questions}) => {
     return pct;
   }
 
+  const countCorrectAnswers = () => {
+    if (!session) return 0;
+    const result = Object.values(session).map(k => k.filter(i => i == true).length).reduce((a,b) => a + b, 0)
+    return result;
+  }
+
+
+  const calcCorrectPctModule = () => {
+    if (countCorrectAnswers() == 0 || answers == 0) {
+      return 0
+    }
+
+    return (countCorrectAnswers() / answers) * 100
+  }
+
+  const incAnswer = () => {
+    setAnswers((prev) => prev + 1);
+
+    if (identity){
+      console.log(identity.email, calcCorrectPctModule)
+    }
+  }
+
   if (!module)
     return `<div>No Module Found</div>`
 
   return (
-    <QuestionContext.Provider value={{questions, session, setSession}}>
+    <QuestionContext.Provider value={{questions, session, setSession, incAnswer}}>
     <div className="container">
       <Head>
         <title>{module && module.title}</title>
@@ -108,7 +134,9 @@ const ModulePage = ({module, questions}) => {
             </div>
           )
           )}
-          
+          <div>Correct Answers: {countCorrectAnswers()}</div>
+          <div>Attempts:  {answers}</div>
+          <div>Accuracy: {`${calcCorrectPctModule().toPrecision(2)}%`}</div>
           <Button onClick={handleClearSession}>Clear Answers</Button>
         </div>
 

@@ -11,7 +11,7 @@ import { SettingsAccessibilityOutlined } from '@mui/icons-material';
 
 const MultiChoiceQuestion = ({question, onChange, questionKey}) => {
 
-  const {session, setSession} = useContext(QuestionContext);
+  const {session, setSession, incAnswer} = useContext(QuestionContext);
 
   const [value, setValue] = useState('0')
   //const [status, setStatus]  = useState(null);
@@ -39,6 +39,9 @@ const MultiChoiceQuestion = ({question, onChange, questionKey}) => {
     const tmp = Object.assign({}, session);
     tmp[chapter][index] = status
     setSession(tmp);
+    if (status != null) {
+      incAnswer();
+    }
   }
 
   const handleChange = () => {
