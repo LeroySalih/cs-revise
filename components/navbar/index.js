@@ -18,11 +18,15 @@ import Avatar from '@material-ui/core/Avatar';
 
 import MenuIcon from '@material-ui/icons/Menu';
 
+import { useRouter } from "next/router";
 
 // mrsalih on google platform
 const GOOGLE_CLIENT_ID = process.env.NEXT_PUBLIC_GOOGLE_CLIENT_KEY
 
 const NavBar = () => {    
+  
+  const router = useRouter();
+
   // console.log("Google Client Id", process.env.NEXT_PUBLIC_GOOGLE_CLIENT_KEY)
   const { instance, accounts } = useMsal();
   
@@ -110,6 +114,10 @@ const NavBar = () => {
     setIdentity(null);
   }
 
+  const handleSignInRedirect = () => {
+    router.push('/signin');
+  }
+
   return (
     <>
     
@@ -148,17 +156,10 @@ const NavBar = () => {
 
           {!identity && 
           <>
-          <GoogleLogin
-          //mrsalih project on google platform
-            clientId={GOOGLE_CLIENT_ID}
-            buttonText="Login"
-            onSuccess={handleGoogleSignInOK}
-            onFailure={handleGoogleSignInFailed}
-            cookiePolicy={'single_host_origin'}
-          />  
+          
 
-          <Button variant="outlined" startIcon={<Avatar src="/images/ms-logo.png"/>} onClick={handleMicrosoftSignIn}>
-            Sign in with Microsoft
+          <Button variant="outlined" onClick={handleSignInRedirect}>
+            Sign in
           </Button>
           </>
           }
@@ -189,3 +190,15 @@ const NavBar = () => {
 }
 
 export default NavBar;
+
+
+/*
+<GoogleLogin
+          //mrsalih project on google platform
+            clientId={GOOGLE_CLIENT_ID}
+            buttonText="Login"
+            onSuccess={handleGoogleSignInOK}
+            onFailure={handleGoogleSignInFailed}
+            cookiePolicy={'single_host_origin'}
+          />  
+*/

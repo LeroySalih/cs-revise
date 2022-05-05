@@ -74,7 +74,7 @@ const ModulePage = ({module, questions}) => {
   }
 
   const calcCorrectPct = (lesson) => {
-    if (!session) return '';
+    if (!session || !answers) return '';
 
     const answers = session[lesson._id];
     
