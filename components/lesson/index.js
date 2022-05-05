@@ -19,10 +19,7 @@ const Lesson = ({lesson, onIsVisible}) => {
         <h2 >
             <img src="/images/youtube.png" width="2rem" />{lesson.title}</h2> 
         <div>{lesson.desc}</div>
-        <div className="linksToSpec">
-          <h3>Links to Spec</h3>
-          <div dangerouslySetInnerHTML={{__html: lesson.specDesc}}></div>
-        </div>
+        
         <div>{lesson.tasks && Object.values(lesson.tasks).map((t, ti) => (
           <div key={ti}>
             <Task task={t}></Task>

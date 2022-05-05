@@ -34,15 +34,9 @@ const Task = ({task}) => {
 
   if (task.type === 'question'  && question)
     return (<div className="question">
-              <Question  questionKey={task.questionKey} question={getQuestion(task)}/>
+              <Question  questionKey={task.questionKey} question={getQuestion(task)} />
             <style jsx>{`
-              .question {
-                background-color: #0000f020;
-                border: solid 1px #0000f030;
-                padding: 10px;
-                border-radius: 5px;
-                margin: 10px;
-              }
+              
             `}
             </style>
            </div>)

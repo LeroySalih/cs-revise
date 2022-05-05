@@ -11,23 +11,81 @@ import Lesson from '../../components/lesson';
 import Question from '../../components/question';
 
 import { useIntersection } from '../../hooks/useIntersection';
-import {useState} from 'react';
+import {useState, useEffect} from 'react';
 import { SettingsInputSvideo } from '@material-ui/icons';
+import DisplaySession  from '../../components/display-session';
+import Button from '@mui/material/Button';
 
 const ModulePage = ({module, questions}) => {
 
   const [visible, setVisible] = useState(null);
+  const [session, setSession] = useState(null);
+
+  useEffect(()=> {
+    console.log("Questions changed")
+    setSession(createSession(questions))
+  }, [questions]);
+
+  useEffect(()=> {
+    console.log('Session Change Detected', session);
+  }, [session])
+
+  const createSession = (q) => {
+    
+    if (!q) return null;
+
+    const test = {
+      _id:1234,
+      testKey:[1,2,3,4]
+    }
+
+    console.log("Questions", q, );
+    console.log("Questions Keys", Object.keys(q) );
+    const sesh = {}
+
+    test && Object.keys(q).forEach(k => {
+      if (k != '_id'){
+        sesh[k] = Array.apply(null, Array(q[k].length)).map(a => null);
+      }
+    })
+    
+    console.log("Sesh", sesh);
+
+    return sesh;
+  }
+
+  const getQuestionState = (key, index) => (session[key][index]);
+  const setQuestionState = (key, index, state) => {
+    setSession((prev) => { prev[key][index] = state; return prev});
+  }
+
 
   const handleIsVisibleChange = (title, v) => {
     if (v){
       setVisible(title);
     }
-  }  
+  }
+  
+  const handleClearSession = () => {
+    setSession(createSession(questions))
+  }
+
+  const calcCorrectPct = (lesson) => {
+    if (!session) return '';
+
+    const answers = session[lesson._id];
+    
+    const correct = answers.filter(a => a).length
+    const pct = `${(correct / answers.length) * 100}%`
+
+    return pct;
+  }
+
   if (!module)
     return `<div>No Module Found</div>`
 
   return (
-    <QuestionContext.Provider value={{questions}}>
+    <QuestionContext.Provider value={{questions, session, setSession}}>
     <div className="container">
       <Head>
         <title>{module && module.title}</title>
@@ -44,11 +102,16 @@ const ModulePage = ({module, questions}) => {
         <div className="sideBar">
           {module && Object.values(module.lessons).map((l, i) => (
             <div key={i} className="sideMenuItem">
-              <a href={`#${l._id}`} className={`${l.title == visible ? 'visible' : ''}`}>{l.title}</a>
+              <a href={`#${l._id}`} className={`${l.title == visible ? 'visible' : ''}`}>
+                {l.title} ({calcCorrectPct(l)})
+              </a>
             </div>
           )
           )}
+          <DisplaySession session={session} />
+          <Button onClick={handleClearSession}>Clear Answers</Button>
         </div>
+
         <div className="mainPage">
           {
             module && Object.values(module.lessons).map((l, i) => (

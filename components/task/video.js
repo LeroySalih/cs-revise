@@ -1,23 +1,27 @@
 const Video = ({task}) => {
   return (
     <div>
-     <h3 className="video-task-title"> 
-      <img className="logo" src="/images/youtube.png" width="20px" />
-      {task.title}
-    </h3>
-     <div className="videoHolder">
-      <div className="video-desc">{task.desc}</div>
-      <div>
-        <iframe width="300" height="200" 
-          src={`https://www.youtube.com/embed/${task.videoKey}`}
-          frameBorder="0" 
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen>
-          
-        </iframe>
-      </div>
       
-    </div>
+     
+     
+    <div className="video-container">
+      <iframe width="640px" height="385px"
+        src={`https://www.youtube.com/embed/${task.videoKey}`}
+        frameBorder="0" 
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen>
+      </iframe>
+      </div>
+    
     <style jsx>{`
+
+        .video-container {
+          display: flex;
+          align-content: center;
+          justify-content: center;
+          align-items: center;
+          margin-top: 2rem;
+          margin-bottom 2rem;
+        }
 
         .video-task-title {
           margin-left: 10px;
@@ -35,12 +39,7 @@ const Video = ({task}) => {
           margin-right: 2rem; 
         }
 
-        .videoHolder {
-          padding: 20px;
-          display: grid;
-          grid-template-columns: 200px auto;
-          grid-gap: 20px;
-        }
+        
       `}
       </style>
     </div>
